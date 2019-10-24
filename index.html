@@ -1,0 +1,731 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Python Notes</title>
+        
+        <link rel="shortcut icon" href="https://richarddawkinsweaselprogram.000webhostapp.com/Additional/python.png">
+      
+       <!-- <link rel="stylesheet" href="https://richarddawkinsweaselprogram.000webhostapp.com/Additional/styles/agate.css"> -->
+        <!-- <link rel = "stylesheet" href = "https://richarddawkinsweaselprogram.000webhostapp.com/Additional/styles/xcode.css">  -->
+        <link rel="stylesheet" href="./Python Notes_files/a11y-dark.css"> 
+       
+        <script src="./Python Notes_files/highlight.pack.js.download"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+        
+        <style>
+        html, body {
+              line-height: 1.8em;
+              font-size: 1.03em;
+              font-family: Helvetica; 
+               
+        } img[src*="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {
+              display: none; 
+            
+        } #container {
+            display: flex; 
+            flex-direction: column;
+            // height: 100vh; 
+            width: 1200px; 
+           // width: 80vw;
+            margin: 20px; 
+            position: relative; 
+            left: 280px;
+        } pre code {
+            // background-color: #eee;
+            border: 1px solid #999;
+            border-left: 2px solid green;
+            margin-top: -30px;
+            margin-bottom: -60px;
+        } b {
+            background: #ebebeb; 
+            font-family: Monospace;
+            padding: 2px;
+            color: #f55442; 
+            font-weight: 600;
+        } #contents {
+            position: fixed; 
+            display: block; 
+            top: 200px;
+            left: 50px;
+        } #contents h2 {
+            text-align: center; 
+            display: none; 
+        }@media (orientation:portrait) {
+            #container {
+                width: 100vw; 
+                position: static; 
+            } 
+            #contents {
+                position: static; 
+                text-align: center; 
+                width: 100vw; 
+            }
+            pre {
+                font-size: 26px;
+                position: relative; 
+                right: 100px;
+                width: 100vw; 
+            }
+        }
+              
+      </style>
+    </head>
+    <body>
+        <div id="contents">
+            <h2>Contents</h2>
+            <ol id="TOC">
+                <li><a href="#Data">Collection data types</a></li>
+                <li><a href="#While">While loops</a></li>
+                <li><a href="#For">For loops</a></li>
+                <li><a href="#Lambda">Lambdas</a></li>
+                <li><a href="#Class">Classes</a></li>
+                <li><a href="#Elemindex">Index of an element</a></li>
+                <li><a href="#listComprehension">List comprehensions</a></li>
+                <li><a href="#RegEx">Regular Expressions</a></li>
+            </ol>
+        </div>
+        <div id="container">
+            <span>Python runs on a interpeter system = code can be executed as soon as it's written. Write Python (.py) files in a text editor, then put those files in a python interpreter to be executed. To execute the .py file in the command line, just use 'python filename.py'</span>
+            <br>
+            <span>Use 'python' by itself in the command line to test Python code, use 'exit()' when you want to quit the python command line interface.</span>
+            <br>
+            <span>Jupyter is a really good IDE to use for Python. Use the command 'Jupyter notebook' in cmd to open it.
+            </span>
+            <br>
+            <span>
+                To print use: 
+                <pre>                    <code class="hljs php">
+                        <span class="hljs-keyword">print</span>(<span class="hljs-string">"Hello World!"</span>) 
+                    </code>
+                </pre>
+            </span>
+            <br>
+            <span>Python uses new lines, rather than semicolons or brackets, to "complete a command". It also uses indentation (with whitespace) to define scope (as opposed to curly brackets). In other languages, indentation is for readability only - in Python it is very important! e.g. 
+                <pre>                    <code class="hljs php">
+                        <span class="hljs-keyword">if</span> <span class="hljs-number">5</span> &gt; <span class="hljs-number">2</span>: 
+                            <span class="hljs-keyword">print</span>(<span class="hljs-string">"Five is greater than two!"</span>)
+                    </code>
+                </pre>
+            </span>
+            <br>
+            <span>
+                Variable = 'container for storing data value'. Python has no command for declaring a variable, just assign a value to the variable and it is created. Do not declared as any particular type (like int) and can even change type after declared
+                <pre>                    <code class="hljs properties">
+                        <span class="hljs-attr">x</span> = <span class="hljs-string">5</span>
+                        <span class="hljs-attr">y</span> = <span class="hljs-string">'Hello Buddy'</span>
+                        <span class="hljs-attr">x</span> = <span class="hljs-string">'What's up?'</span>
+                    </code>
+                </pre>
+                The variable name: cannot start with a number (_ or a-zA-Z), are case-sensitive. 
+            </span>
+            <span>
+                You can assign values to multiple variables in one line: 
+                <pre>                    <code class="hljs php">
+                        x, y, z = <span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-string">'Hello World!'</span>
+                    </code>
+                </pre>
+                You can assign the same value to multiple variables in one line: 
+                <pre>                    <code class="hljs properties">
+                        <span class="hljs-attr">x</span> = <span class="hljs-string">y = z = 5</span>
+                    </code>
+                </pre>
+                there are three types of number-variables in python: 
+                <pre>                    <code class="hljs nginx">
+                        <span class="hljs-attribute">x</span> = <span class="hljs-number">5</span> <span class="hljs-comment">#this is an integer, a whole number</span>
+                        y = <span class="hljs-number">5</span>.<span class="hljs-number">7</span> <span class="hljs-comment">#this is a floating-point, a number with decimals</span>
+                        z = 7j <span class="hljs-comment">#this is a complex number</span>
+                    </code>
+                </pre>
+                to find out the type of variable, use the <b>test()</b> function: 
+                <pre>                    <code class="hljs bash">
+                        x = 55.2832
+                        <span class="hljs-built_in">print</span>(<span class="hljs-built_in">test</span>(x)) <span class="hljs-comment">#returns class float</span>
+                    </code>
+                </pre>
+                You can convert variables from one type to another using <b>int()</b>, <b>float()</b>, <b>complex()</b> and <b>str()</b> methods. You can also use these if you want to specify the type of variable.
+                <pre>                    <code class="hljs perl">
+                        <span class="hljs-keyword">x</span> = <span class="hljs-number">33.22222</span> 
+                        <span class="hljs-keyword">print</span>(<span class="hljs-keyword">int</span>(<span class="hljs-keyword">x</span>)) <span class="hljs-comment">#returns 33</span>
+                        <span class="hljs-keyword">y</span> = <span class="hljs-keyword">int</span>(<span class="hljs-number">65.2342342</span>)
+                        <span class="hljs-keyword">print</span>(<span class="hljs-keyword">y</span>)
+                    </code>
+                </pre>
+                There's no char variable type! A single character variable = just a string with length = 1. 
+            </span>
+            <br>
+            <span>
+                To comment a line use: 
+                <pre>                    <code class="hljs php">
+                        <span class="hljs-comment">#this is a comment</span>
+                        <span class="hljs-keyword">print</span>(<span class="hljs-string">"Hello World"</span>) <span class="hljs-comment">#this is also a comment </span>
+                    </code>
+                </pre>
+                No real syntax for multi-line comments, but you can use a string-literal (ignored if not assigned to a variable) 
+                <pre>                    <code class="hljs python">
+                        <span class="hljs-string">""" 
+                        this is a 
+                        multi-line
+                        comment
+                        """</span>
+                    </code>
+                </pre>
+            </span>
+            <br> 
+            <span> 
+                To generate a random number, you have to import the <b>random</b> module, then run a method on it
+                <pre>                    <code class="hljs python">
+                        <span class="hljs-keyword">import</span> random 
+                        print(random.randrange(<span class="hljs-number">1</span>,<span class="hljs-number">100</span>))
+                    </code>
+                </pre>
+            </span>
+            <br> 
+            <span>
+                Strings in python are arrays. Access the 'elements' of the string with square brackets <b>str[0]</b>
+                <pre>                    <code class="hljs php">
+                        x = <span class="hljs-string">"Hello World!"</span> 
+                        <span class="hljs-keyword">print</span>(x[<span class="hljs-number">1</span>]) <span class="hljs-comment">#returns 'e'</span>
+                    </code>
+                </pre>
+                To get the string contents from characters 2 to 5 for example: 
+                <pre>                    <code class="hljs php">
+                        x = <span class="hljs-string">"Hello World!"</span> 
+                        <span class="hljs-keyword">print</span>(x[<span class="hljs-number">2</span>:<span class="hljs-number">5</span>]) <span class="hljs-comment">#returns 'llo' - LAST INDEX IS NON-INCLUSIVE, like .slice() in JS</span>
+                    </code>
+                </pre>
+            </span>
+            <br>
+            <span><b>str.strip()</b> method removes whitepace from before and after the string</span>
+            <br> 
+            <span><b>len(str)</b> method returns the length of the string</span>
+            <br>
+            <span><b>str.lower()</b> method returns the string in lowercase</span>
+            <br> 
+            <span><b>str.upper()</b> method returns the string in uppercase</span>
+            <br>
+            <span><b>str.replace('a','b')</b> replaces something in the string with something else e.g. 
+                <pre>                    <code class="hljs php">
+                        x = <span class="hljs-string">"Hello World!"</span>
+                        <span class="hljs-keyword">print</span>(x.replace(<span class="hljs-string">'o'</span>,<span class="hljs-string">'e'</span>)) <span class="hljs-comment">#returns 'Helle Werld!'</span>
+                    </code>
+                </pre>
+            </span>
+            <br> 
+            <span><b>str.split(' ')</b> splits the string into an array by a separator, passed as the argument
+                <pre>                    <code class="hljs objectivec">
+                        x = <span class="hljs-string">"Hello World!"</span>
+                        pring(x.split(<span class="hljs-string">' '</span>) <span class="hljs-meta">#returns [<span class="hljs-meta-string">"Hello"</span>, <span class="hljs-meta-string">"World!"</span>]</span>
+                    </code>
+                </pre>
+            </span>
+            <br>
+            <span>
+                To insert numbers into strings, use <b>format</b> and the placeholder <b>{}</b>: 
+                <pre>                    <code class="hljs properties">
+                        <span class="hljs-attr">quantity</span> = <span class="hljs-string">3</span>
+                        <span class="hljs-attr">itemno</span> = <span class="hljs-string">567</span>
+                        <span class="hljs-attr">price</span> = <span class="hljs-string">49.95</span>
+                        <span class="hljs-attr">myorder</span> = <span class="hljs-string">"I want {} pieces of item {} for {} dollars."</span>
+                        <span class="hljs-meta">print(myorder.format(quantity,</span> <span class="hljs-string">itemno, price))</span>
+<span class="hljs-comment">                        ###############</span>
+                        <span class="hljs-attr">quantity</span> = <span class="hljs-string">3</span>
+                        <span class="hljs-attr">itemno</span> = <span class="hljs-string">567</span>
+                        <span class="hljs-attr">price</span> = <span class="hljs-string">49.95</span>
+                        <span class="hljs-attr">myorder</span> = <span class="hljs-string">"I want to pay {2} dollars for {0} pieces of item {1}."</span>
+                        <span class="hljs-meta">print(myorder.format(quantity,</span> <span class="hljs-string">itemno, price))</span>
+                    </code>
+                </pre>
+            </span>
+            <br> 
+            <span>arithmetic, assigment and comparison operators are as expected. Logical operators are different! 
+            <b>and</b> = <b>&amp;&amp;</b>, <b>or</b> = <b>||</b>, <b>not()</b> = <b>!()</b>
+            </span>
+            <br>
+            <span>identity operators: compare variables to see if they are the same
+                <pre>                    <code class="hljs python">
+                        x <span class="hljs-keyword">is</span> y <span class="hljs-comment"># returns true if they are both the same</span>
+                        x <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> y <span class="hljs-comment">#returns true if they are not the same</span>
+                    </code>
+                </pre>
+            </span>
+            <br> 
+            <span>
+                membership operator: checks if a variable is in an array 
+                <pre>                    <code class="hljs python">
+                        fruits = [<span class="hljs-string">"apple"</span>, <span class="hljs-string">"banana"</span>]
+                        <span class="hljs-keyword">if</span> <span class="hljs-string">"apple"</span> <span class="hljs-keyword">in</span> fruits:   <span class="hljs-comment">#not in does the opposite</span>
+                            print(<span class="hljs-string">"Yes, apple is a fruit!"</span>)
+                    </code>
+                </pre>
+            </span>
+            <br> 
+            <span id="Data">
+                There are four 'collection data types' in Python.
+                <ul>
+                    <li>Lists (equiv. to an array): ordered, changeable, allows duplicate elements</li>
+                    <pre>                        <code class="hljs python">
+                            myList = [<span class="hljs-string">'apples'</span>, <span class="hljs-string">'oranges'</span>, <span class="hljs-string">'bananas'</span>, <span class="hljs-string">'tomatoes'</span>] <span class="hljs-comment">#a list</span>
+                            
+                            <span class="hljs-comment">#using the list constructor instead (NB double brackets): </span>
+                            
+                            myList = list((<span class="hljs-string">'apples'</span>, <span class="hljs-string">'oranges'</span>, <span class="hljs-string">'bananas'</span>, <span class="hljs-string">'tomatoes'</span>))
+                            
+                            print(myList[<span class="hljs-number">1</span>]) <span class="hljs-comment">#prints 'oranges'</span>
+                            
+                            <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> myList: 
+                                print(x)
+                                
+                            <span class="hljs-comment">#check if element is present in list </span>
+                            <span class="hljs-keyword">if</span> <span class="hljs-string">'apples'</span> <span class="hljs-keyword">in</span> myList: 
+                                print(<span class="hljs-string">'yes'</span>)
+                                
+                            <span class="hljs-comment">#list length </span>
+                            <span class="hljs-keyword">print</span> (len(myList))
+                            
+                            <span class="hljs-comment">#add elements to the end of the array (like .push())</span>
+                            myList.append(<span class="hljs-string">'strawberries'</span>)
+                            
+                            <span class="hljs-comment">#to insert element at a specific index </span>
+                            myList.insert(<span class="hljs-number">1</span>, <span class="hljs-string">'cherries'</span>)
+                            
+                            <span class="hljs-comment">#to remove a specific element </span>
+                            myList.remove(<span class="hljs-string">'oranges'</span>)
+                            
+                            <span class="hljs-comment">#to remove a specific index (if non-specified removes last element):</span>
+                            myList.pop(<span class="hljs-number">0</span>) <span class="hljs-keyword">or</span> 
+                            <span class="hljs-keyword">del</span> myList[<span class="hljs-number">0</span>]
+                            
+                            <span class="hljs-comment">#to completely empty the list </span>
+                            myList.clear()
+                            
+                            <span class="hljs-comment">#to copy a list use: </span>
+                            newList = myList.copy()
+                        </code>
+                    </pre>
+                    <li>Tuples: ordered, UNCHANGEABLE, allows duplicate elements. ROUND BRACKETS!</li>
+                    <pre>                        <code class="hljs python">
+                            mytuple = (<span class="hljs-string">'printer'</span>, <span class="hljs-string">'stapler'</span>, <span class="hljs-string">'computer'</span>) <span class="hljs-comment">#OR</span>
+                            mytuple = tuple((<span class="hljs-string">'printer'</span>, <span class="hljs-string">'stapler'</span>, <span class="hljs-string">'computer'</span>))
+                            
+                            print(mytuple[<span class="hljs-number">0</span>]) <span class="hljs-comment">#logs 'printer'</span>
+                            
+                            <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> mytuple:   <span class="hljs-comment">#to loop through a tuple </span>
+                                print(x)
+                                
+                            <span class="hljs-keyword">if</span> <span class="hljs-string">'printer'</span> exists <span class="hljs-keyword">in</span> mytuple: 
+                                print(<span class="hljs-string">'yes, there is a printer here'</span>)
+                            
+                            print(len(mytuple)) <span class="hljs-comment">#returns 3 </span>
+                            
+                            <span class="hljs-keyword">del</span> mytuple <span class="hljs-comment">#you cannot remove or add items to a tuple, but you can delete the whole thing</span>
+                        </code>
+                    </pre>
+                    <li>Set: unordered, unindexed, NO duplicate elements. CURLY BRACKETS</li>
+                    <pre>                        <code class="hljs python">
+                            mySet = {<span class="hljs-string">'Harry'</span>, <span class="hljs-string">'Mark'</span>, <span class="hljs-string">'Tom'</span>} <span class="hljs-comment">#or </span>
+                            mySet = set((<span class="hljs-string">'Harry'</span>, <span class="hljs-string">'Mark'</span>, <span class="hljs-string">'Tom'</span>))
+                            
+                            <span class="hljs-comment">#you cannot get elements by their position/index, because sets are unordered/indexed </span>
+                            
+                            <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> mySet: <span class="hljs-comment">#loop through the set </span>
+                                print(x) 
+                                
+                            print(<span class="hljs-string">'Mark'</span> <span class="hljs-keyword">in</span> mySet) <span class="hljs-comment">#returns true </span>
+                            
+                            mySet.add(<span class="hljs-string">'John-John'</span>) <span class="hljs-comment">#add a single element </span>
+                            
+                            mySet.update(<span class="hljs-string">'Sam'</span>, <span class="hljs-string">'Nick'</span>, <span class="hljs-string">'James'</span>) <span class="hljs-comment">#add multiple elements at once </span>
+                            
+                            print(len(mySet)) <span class="hljs-comment">#length of the set </span>
+                            
+                            mySet.remove(<span class="hljs-string">'Harry'</span>) <span class="hljs-comment">#or </span>
+                            mySet.discard(<span class="hljs-string">'Harry'</span>) <span class="hljs-comment">#to remove an element </span>
+                            
+                            mySet.pop() <span class="hljs-comment">#removes the last element from the set ==&gt; unordered, you do not know what this will be. </span>
+                            
+                            mySet.clear() <span class="hljs-comment">#empties the set </span>
+                            
+                            <span class="hljs-keyword">del</span> mySet <span class="hljs-comment">#deletes the set completely </span>
+                        </code>
+                    </pre>
+                    <li>Dictionary (equiv. to an object): unordered, changeable and indexed. NO duplicate elements.</li>
+                    <pre>                        <code class="hljs coffeescript">
+                            myDict = {
+                            <span class="hljs-string">'name'</span>: <span class="hljs-string">'Lightning McQueen'</span>, 
+                            <span class="hljs-string">'type'</span>: <span class="hljs-string">'racecar'</span>, 
+                            <span class="hljs-string">'age'</span>: <span class="hljs-number">4</span>, 
+                            <span class="hljs-string">'winner'</span>: <span class="hljs-literal">true</span>
+                            }
+                            
+                            <span class="hljs-keyword">or</span> 
+                            
+                            dict(name=<span class="hljs-string">"Lightning McQueen"</span>, type=<span class="hljs-string">"racecar"</span>, age=<span class="hljs-number">4</span>, winner = <span class="hljs-literal">true</span>)
+                            
+                            myDict[<span class="hljs-string">'age'</span>] <span class="hljs-comment">#returns 4 </span>
+                            myDict.get(<span class="hljs-string">'age'</span>) <span class="hljs-comment">#returns the value of the 'age' key </span>
+                            
+                            myDict[<span class="hljs-string">'age'</span>] = <span class="hljs-number">25</span> <span class="hljs-comment">#changes the value of 'age' to 25 </span>
+                            
+                            <span class="hljs-comment">#to loop through the dictionary/object keys </span>
+                            <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> myDict: 
+                                <span class="hljs-built_in">print</span>(x)
+                            
+                            <span class="hljs-comment">#to loop through the dictionary values</span>
+                            <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> myDict:
+                                <span class="hljs-built_in">print</span>(myDict[x])
+                            
+                            <span class="hljs-comment">#or </span>
+                            <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> myDict.values(): 
+                                <span class="hljs-built_in">print</span>(x)
+                                
+                            <span class="hljs-comment">#to loop through dictionary keys and values</span>
+                            <span class="hljs-keyword">for</span> x, y <span class="hljs-keyword">in</span> myDict.items(): 
+                                <span class="hljs-built_in">print</span>(x,y) 
+                            
+                            <span class="hljs-comment">#check if key exists</span>
+                            <span class="hljs-keyword">if</span> <span class="hljs-string">'age'</span> <span class="hljs-keyword">in</span> myDict: 
+                                <span class="hljs-built_in">print</span>(<span class="hljs-string">'cool'</span>) 
+                            
+                            <span class="hljs-comment">#to determine how many items (key-value pairs) the dictionary/object has </span>
+                            <span class="hljs-built_in">print</span>(len(myDict))
+                            
+                            <span class="hljs-comment">#to remove items using a specific key </span>
+                            myDict.pop(<span class="hljs-string">'age'</span>) 
+                            <span class="hljs-comment">#or </span>
+                            del myDict[<span class="hljs-string">'age'</span>]
+                            
+                            <span class="hljs-comment">#to remove the last inserted item </span>
+                            myDict.popItem()
+                            
+                            <span class="hljs-comment">#to empty a dictionary </span>
+                            myDict.clear()
+                            
+                            <span class="hljs-comment">#to copy a dictionary </span>
+                            newDict = myDict.copy() <span class="hljs-keyword">or</span> 
+                            newDict = dict(myDict)
+                            <span class="hljs-comment">#remember, if you use newDict = myDict, newDict will simply be a reference to myDict, and any changes to myDict will also occur in newDict </span>
+                        </code>
+                    </pre>
+                </ul>
+            </span>
+            <br>
+            <span>
+                If-else statements: 
+                <pre>                    <code class="hljs python">
+                        a = <span class="hljs-number">200</span>
+                        b = <span class="hljs-number">33</span>
+                        <span class="hljs-keyword">if</span> b &gt; a:
+                          print(<span class="hljs-string">"b is greater than a"</span>)
+                        <span class="hljs-keyword">elif</span> a == b:
+                          print(<span class="hljs-string">"a and b are equal"</span>)
+                        <span class="hljs-keyword">else</span>:
+                          print(<span class="hljs-string">"a is greater than b"</span>)
+                    </code>
+                </pre>
+                If you only have one statement to execute, you can put it in one line: 
+                <pre>                    <code class="hljs php">
+                        <span class="hljs-keyword">if</span> a &gt; b: <span class="hljs-keyword">print</span>(<span class="hljs-string">"a is greater than b"</span>)
+                    </code>
+                </pre>
+                If only one for if and one for else: 
+                <pre>                    <code class="hljs php">
+                        <span class="hljs-keyword">print</span>(<span class="hljs-string">"A"</span>) <span class="hljs-keyword">if</span> a &gt; b <span class="hljs-keyword">else</span> <span class="hljs-keyword">print</span>(<span class="hljs-string">"B"</span>)
+                        <span class="hljs-keyword">print</span>(<span class="hljs-string">"A"</span>) <span class="hljs-keyword">if</span> a &gt; b <span class="hljs-keyword">else</span> <span class="hljs-keyword">print</span>(<span class="hljs-string">"="</span>) <span class="hljs-keyword">if</span> a == b <span class="hljs-keyword">else</span> <span class="hljs-keyword">print</span>(<span class="hljs-string">"B"</span>) <span class="hljs-comment">#you can keep stringing them together. </span>
+                    </code>
+                </pre>
+            </span>
+            <br>
+            <span id="While">
+                while loop: 
+                <pre>                    <code class="hljs properties">
+                        <span class="hljs-attr">i</span> = <span class="hljs-string">1</span>
+                        <span class="hljs-attr">while</span> <span class="hljs-string">i &lt; 6:</span>
+                          <span class="hljs-attr">print(i)</span>
+                          <span class="hljs-attr">i</span> <span class="hljs-string">+= 1</span>
+                    </code>
+                </pre>
+                you can <b>break</b> a while loop (like in AHK): 
+                <pre>                    i = 1
+                    while i &lt; 6:
+                      print(i)
+                      if i == 3:
+                        break
+                      i += 1
+                </pre>
+                You can use a <b>continue</b> statement to stop the iteration, and then 'continue' with the next iteration ==&gt; i.e. continue with the loop
+                <pre>                    <code class="hljs php">
+                        i = <span class="hljs-number">0</span>
+                        <span class="hljs-keyword">while</span> i &lt; <span class="hljs-number">6</span>:
+                          i += <span class="hljs-number">1</span> 
+                          <span class="hljs-keyword">if</span> i == <span class="hljs-number">3</span>:
+                            <span class="hljs-keyword">continue</span>
+                          <span class="hljs-keyword">print</span>(i)
+                    </code>
+                </pre>
+            </span>
+            <br>
+            <span id="For">
+                For loops: 
+                <pre>                    <code class="hljs python">
+                        <span class="hljs-comment">#to print each element in a list </span>
+                        myFruits = [<span class="hljs-string">'banana'</span>, <span class="hljs-string">'apple'</span>, <span class="hljs-string">'grapefruit'</span>, <span class="hljs-string">'mango'</span>]
+                        <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> myFruits: 
+                            print(x)
+                        
+                        <span class="hljs-comment">#to print each character in a string </span>
+                        <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-string">"Jimmy"</span>: 
+                            print(x)
+                    </code>
+                </pre>
+                You can use <b>break</b> if for loops: 
+                <pre>                    <code class="hljs python">
+                        myFruits = [<span class="hljs-string">'banana'</span>, <span class="hljs-string">'apple'</span>, <span class="hljs-string">'grapefruit'</span>, <span class="hljs-string">'mango'</span>]
+                        <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> myFruits: 
+                            print(x)
+                            <span class="hljs-keyword">if</span> (x == <span class="hljs-string">'apple'</span>): 
+                                <span class="hljs-keyword">break</span> 
+                    </code>
+                </pre>
+            </span>
+            <br>
+            <span>
+                To run a loop a specific number of times, use <b>range()</b>
+                <pre>                    <code class="hljs python">
+                        <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">10</span>): <span class="hljs-comment">#prints 0,1,2,3,4,5,6,7,8,9</span>
+                            print(x)
+                            
+                        
+                        <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>,<span class="hljs-number">10</span>): <span class="hljs-comment">#starts at 5 - 5,6,7,8,9</span>
+                            print(x)
+                            
+                        <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">2</span>): <span class="hljs-comment">#starts at 5, increments by 2s - 5, 7, 9</span>
+                    </code>
+                </pre>
+            </span>
+            <br>
+            <span>
+                To specify a block of code to run when the <b>for</b> loop ends, use <b>else</b>
+                <pre>                    <code class="hljs python">
+                        <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">6</span>):
+                          print(x)
+                        <span class="hljs-keyword">else</span>:
+                          print(<span class="hljs-string">"Finally finished!"</span>)
+                    </code>
+                </pre>
+            </span>
+            <br>
+            <span>
+                You can put loops inside of loops (nested loops) 
+                <pre>                    <code class="hljs python">
+                        adj = [<span class="hljs-string">"red"</span>, <span class="hljs-string">"big"</span>, <span class="hljs-string">"tasty"</span>]
+                        fruits = [<span class="hljs-string">"apple"</span>, <span class="hljs-string">"banana"</span>, <span class="hljs-string">"cherry"</span>]
+                        
+                        <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> adj:
+                          <span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> fruits:
+                            print(x, y)
+                    </code>
+                </pre>
+            </span>
+            <br>
+            <span>
+                Function = "A block of code that runs when called". Defined with the <b>def</b> keyword in Python: 
+                <pre>                    <code class="hljs python">
+                        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">functionName</span><span class="hljs-params">()</span>:</span> 
+                            print(<span class="hljs-string">"You've called the function"</span>)
+                            
+                        functionName()
+                        
+                        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">myName</span><span class="hljs-params">(name)</span>:</span>
+                            print(<span class="hljs-string">"My name is"</span> + name)
+                            
+                        <span class="hljs-comment">#to set a default parameter value</span>
+                        
+                        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">myName</span><span class="hljs-params">(name = <span class="hljs-string">"Jimmy"</span>)</span>:</span> 
+                            print(<span class="hljs-string">"My name is"</span> + name)
+                        
+                        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(a,b)</span>:</span> 
+                            <span class="hljs-keyword">return</span> a + b
+                    </code>
+                </pre>
+            </span>
+            <br>
+            <span>
+                RECURSION IS A BIG THING IN PYTHON! Function recursion = 'when a function calls itself'
+                <pre>                    <code class="hljs python">
+                        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">recur_factorial</span><span class="hljs-params">(n)</span>:</span>  
+                           <span class="hljs-keyword">if</span> n == <span class="hljs-number">1</span>:  
+                               <span class="hljs-keyword">return</span> n  
+                           <span class="hljs-keyword">else</span>:  
+                               <span class="hljs-keyword">return</span> n*recur_factorial(n<span class="hljs-number">-1</span>)  
+                           
+                        <span class="hljs-comment">#similar to JavaScript</span>
+                    </code>
+                </pre>
+            </span>
+            <br>
+            <span id="Lambda">
+                Lambda function = "a small autonomous function". Syntax =  <b>lambda <i>arguments</i> : <i>expression</i> </b>. Can have multiple arguments, but only one expression. 
+                <pre>                    <code class="hljs python">
+                        x = <span class="hljs-keyword">lambda</span> a : a + <span class="hljs-number">10</span>
+                        x(<span class="hljs-number">6</span>) <span class="hljs-comment">#returns 16</span>
+                        
+                        x = <span class="hljs-keyword">lambda</span> a, b: a * b * <span class="hljs-number">2</span>
+                        x(<span class="hljs-number">2</span>,<span class="hljs-number">3</span>) <span class="hljs-comment">#returns 12 </span>
+                    </code>
+                </pre>
+            </span>
+            <br>
+            <span>
+                Lambdas are really useful when used inside another function. E.g. to create a function that always triples any value passed to it: 
+                <pre>                    <code class="hljs python">
+                        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">myfunc</span><span class="hljs-params">(n)</span>:</span>
+                          <span class="hljs-keyword">return</span> <span class="hljs-keyword">lambda</span> a : a * n
+                        
+                        mytripler = myfunc(<span class="hljs-number">3</span>)
+                        
+                        print(mytripler(<span class="hljs-number">11</span>))
+                    </code>
+                </pre>
+            </span>
+            <br>
+            <span id="Class">
+                A class = like an object constructor function (which is why I guess they added <b>class</b> syntax for object constructor functions in ES6) = provides a blueprint for the layout of an object. Use the <b>class</b> keyword: 
+                <pre>                    <code class="hljs python">
+                        <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span>:</span> 
+                            name = <span class="hljs-string">"Fido"</span>
+                        
+                        <span class="hljs-comment">#to create an object </span>
+                        
+                        fido = Dog()
+                        print(fido.name) <span class="hljs-comment">#prints "Fido"</span>
+                    </code>
+                </pre>
+            </span>
+            <br>
+            <span>
+                To give the object properties, use the inbuilt <b>__init__()</b> function. Called every time the class is used to create a new object.  
+                <pre>                    <code class="hljs ruby">
+                        <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>:</span>
+                          <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(<span class="hljs-keyword">self</span>, name, age)</span></span>: <span class="hljs-comment">#self refers to the current instance of the class</span>
+                            <span class="hljs-keyword">self</span>.name = name
+                            <span class="hljs-keyword">self</span>.age = age
+                        
+                        p1 = Person(<span class="hljs-string">"John"</span>, <span class="hljs-number">36</span>)
+                        
+                        print(p1.name)
+                        print(p1.age)
+                    </code>
+                </pre>
+            </span>
+            <br>
+            <span>
+                Remember, objects can have <b>methods</b> = functions within an object. 
+                <pre>                    <code class="hljs ruby">
+                        <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>:</span>
+                          <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(<span class="hljs-keyword">self</span>, name, age)</span></span>:
+                            <span class="hljs-keyword">self</span>.name = name
+                            <span class="hljs-keyword">self</span>.age = age
+                        
+                          <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">myfunc</span><span class="hljs-params">(<span class="hljs-keyword">self</span>)</span></span>:
+                            print(<span class="hljs-string">"Hello my name is "</span> + <span class="hljs-keyword">self</span>.name)
+                        
+                        p1 = Person(<span class="hljs-string">"John"</span>, <span class="hljs-number">36</span>)
+                        p1.myfunc()
+                    </code>
+                </pre>
+            </span>
+            <br>
+            <span>
+                You can call <b>self</b> whatever you like, but it has to be the first parameter of any class. 
+                <pre>                    <code class="hljs python">
+                        <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>:</span>
+                          <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(mysillyobject, name, age)</span>:</span>
+                            mysillyobject.name = name
+                            mysillyobject.age = age
+                        
+                          <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">myfunc</span><span class="hljs-params">(abc)</span>:</span>
+                            print(<span class="hljs-string">"Hello my name is "</span> + abc.name)
+                        
+                        p1 = Person(<span class="hljs-string">"John"</span>, <span class="hljs-number">36</span>)
+                        p1.myfunc()
+                    </code>
+                </pre>
+            </span>
+            <br>
+            <span>
+                INHERITANCE: to get a subtype/child class to inherit all the properties and methods from a supertype/parent class
+                <pre>                    <code class="hljs ruby">
+                        <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>:</span>
+                          <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(<span class="hljs-keyword">self</span>, fname, lname)</span></span>:
+                            <span class="hljs-keyword">self</span>.firstname = fname
+                            <span class="hljs-keyword">self</span>.lastname = lname
+                        
+                          <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">printname</span><span class="hljs-params">(<span class="hljs-keyword">self</span>)</span></span>:
+                            print(<span class="hljs-keyword">self</span>.firstname, <span class="hljs-keyword">self</span>.lastname)
+                        
+                        <span class="hljs-comment">#Use the Person class to create an object, and then execute the printname method:</span>
+                        
+                        x = Person(<span class="hljs-string">"John"</span>, <span class="hljs-string">"Doe"</span>)
+                        x.printname()
+                        
+                        <span class="hljs-comment">#To create a child class: </span>
+                        
+                        <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span>(<span class="hljs-title">Person</span>):</span>
+                            pass
+                        
+                        <span class="hljs-comment">#Any object created with Student will have all the properties and methods in the Person class</span>
+                        
+                        <span class="hljs-comment">#use pass when you don't want to add anything to the class</span>
+                        x = Student(<span class="hljs-string">"Mike"</span>, <span class="hljs-string">"Olsen"</span>)
+                        x.printname()
+                    </code>
+                </pre>
+                NOTE: if you add <b>__init()__</b> to the child element, it will override the parent's <b>__init()__</b> (same if you add any method with the same name as a method in the parent class). To keep the inheritance of the parent's __init__() function, add a call to the parent's __init__() function:
+                <pre>                    <code class="hljs ruby">
+                        <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span>(<span class="hljs-title">Person</span>):</span>
+                          <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(<span class="hljs-keyword">self</span>, fname, lname)</span></span>:
+                            Person.__init_<span class="hljs-number">_</span>(<span class="hljs-keyword">self</span>, fname, lname)
+                    </code>
+                </pre>
+            </span>
+            <br>
+            <span>
+                Boolean variables in Python are <b>True</b> and <b>False</b>, <i>capitalised</i>
+            </span>
+            <br>
+            <span id="Elemindex">Index of an element in a List <b>list.index(element)</b></span>
+            <br>
+            <span>To count the number of times an element is in a list use <b>list.count(element)</b></span>
+            <br>
+            <span id="listComprehension">To convert all the elements in a list to integers use a list comprehension: <b>[int(x) for x in list]</b></span>
+            <br>
+            <span>Map through a list or a tuple using <b>map(function, iterables)</b></span>
+            <pre>                <code class="hljs properties">
+                    <span class="hljs-attr">my_list</span> = <span class="hljs-string">[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span>
+                    <span class="hljs-attr">my_list</span> = <span class="hljs-string">list(map(lambda x: x*2, my_list))</span>
+<span class="hljs-comment">                    #in Python 3.7 map() returns an object, have to apply list() to get a list back</span>
+                </code>
+            </pre>
+            <br>
+            <span>To iterate through the elements AND the indexes of a list, use <b>enumerate()</b> </span>
+            <pre>                <code class="hljs perl">
+                    my_list = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>,<span class="hljs-string">"john"</span>,<span class="hljs-string">"harry"</span>]
+                    <span class="hljs-keyword">for</span> <span class="hljs-keyword">index</span>, element in enumerate(my_list):
+                        <span class="hljs-keyword">print</span>(<span class="hljs-keyword">index</span>, element)
+                </code>
+            </pre>
+            <span>Can do this with strings too, which are treated like lists in Python</span>
+            <br>
+            <span id="RegEx">RegEx:</span>
+            <pre>                <code class="hljs python">
+                    <span class="hljs-keyword">import</span> re <span class="hljs-comment">#have to import the regex module to use it </span>
+                    
+                    example_string = <span class="hljs-string">"Hello World!"</span>
+                    
+                    <span class="hljs-comment">#to replace all the matches in a string with something else </span>
+                    example_string = re.sub(<span class="hljs-string">"[aeiou]"</span>, <span class="hljs-string">""</span>, example_string)
+                </code>
+            </pre>
+        </div>
+    </body>
+    </html>
