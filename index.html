@@ -121,7 +121,7 @@
                 <code>print("Hello World!") </code>
             </pre>
             <br>
-            <span>Python uses new lines, rather than semicolons or brackets, to "complete a command". It also uses indentation (with whitespace) to define scope (as opposed to curly brackets). In other languages, indentation is for readability only - in Python it is very important! e.g.</span>
+            <span>Python uses new lines, rather than semicolons or brackets, to "complete a command". It also uses indentation (with whitespace) to define scope (as opposed to curly brackets). In other languages, indentation is for readability only - in Python it is very important! Indent with TAB or with 4 spaces e.g.</span>
             <pre>
                 <code>
                     if 5 > 2:
@@ -129,41 +129,37 @@
                 </code>
             </pre>
             <br>
-            <span>
-                Variable = 'container for storing data value'. Python has no command for declaring a variable, just assign a value to the variable and it is created. Do not declared as any particular type (like int) and can even change type after declared
-                <pre>                    <code class="hljs properties">
-                        <span class="hljs-attr">x</span> = <span class="hljs-string">5</span>
-                        <span class="hljs-attr">y</span> = <span class="hljs-string">'Hello Buddy'</span>
-                        <span class="hljs-attr">x</span> = <span class="hljs-string">'What's up?'</span>
-                    </code>
+            <span> Variable = 'container for storing data value'. Python has no command for declaring a variable, just assign a value to the variable and it is created. Do not declared as any particular type (like int) and can even change type after declared </span>
+            <pre>
+                <code>
+                        x = 5
+                        y = 'Hello Buddy'
+                        x = True
+                </code>
+            </pre>
+            <span>The variable name: cannot start with a number (_ or a-zA-Z), are case-sensitive. </span>
+            <span>You can assign values to multiple variables in one line: </span>
+                <pre>
+                    <code>x, y, z = 5, 10, 'Hello World!'</code>
                 </pre>
-                The variable name: cannot start with a number (_ or a-zA-Z), are case-sensitive. 
-            </span>
-            <span>
-                You can assign values to multiple variables in one line: 
-                <pre>                    <code class="hljs php">
-                        x, y, z = <span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-string">'Hello World!'</span>
-                    </code>
+            <span>You can assign the same value to multiple variables in one line: </span>
+                <pre>
+                    <code>x = z = 5</code>
                 </pre>
-                You can assign the same value to multiple variables in one line: 
-                <pre>                    <code class="hljs properties">
-                        <span class="hljs-attr">x</span> = <span class="hljs-string">y = z = 5</span>
-                    </code>
-                </pre>
-                there are three types of number-variables in python: 
+            <span> there are three types of number-variables in python: </span>
                 <pre>                    <code class="hljs nginx">
                         <span class="hljs-attribute">x</span> = <span class="hljs-number">5</span> <span class="hljs-comment">#this is an integer, a whole number</span>
                         y = <span class="hljs-number">5</span>.<span class="hljs-number">7</span> <span class="hljs-comment">#this is a floating-point, a number with decimals</span>
                         z = 7j <span class="hljs-comment">#this is a complex number</span>
                     </code>
                 </pre>
-                to find out the type of variable, use the <b>test()</b> function: 
+            <span> to find out the type of variable, use the <b>test()</b> function: </span>
                 <pre>                    <code class="hljs bash">
                         x = 55.2832
                         <span class="hljs-built_in">print</span>(<span class="hljs-built_in">test</span>(x)) <span class="hljs-comment">#returns class float</span>
                     </code>
                 </pre>
-                You can convert variables from one type to another using <b>int()</b>, <b>float()</b>, <b>complex()</b> and <b>str()</b> methods. You can also use these if you want to specify the type of variable.
+            <span> You can convert variables from one type to another using <b>int()</b>, <b>float()</b>, <b>complex()</b> and <b>str()</b> methods. You can also use these if you want to specify the type of variable. </span>
                 <pre>                    <code class="hljs perl">
                         <span class="hljs-keyword">x</span> = <span class="hljs-number">33.22222</span> 
                         <span class="hljs-keyword">print</span>(<span class="hljs-keyword">int</span>(<span class="hljs-keyword">x</span>)) <span class="hljs-comment">#returns 33</span>
@@ -171,8 +167,7 @@
                         <span class="hljs-keyword">print</span>(<span class="hljs-keyword">y</span>)
                     </code>
                 </pre>
-                There's no char variable type! A single character variable = just a string with length = 1. 
-            </span>
+            <span>There's no char variable type! A single character variable = just a string with length = 1. </span>
             <br>
             <span>
                 To comment a line use: 
@@ -551,26 +546,26 @@
             </span>
             <br>
             <span>
-                Function = "A block of code that runs when called". Defined with the <b>def</b> keyword in Python: 
-                <pre>                    <code class="hljs python">
-                        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">functionName</span><span class="hljs-params">()</span>:</span> 
-                            print(<span class="hljs-string">"You've called the function"</span>)
-                            
+                Function = "A block of organised, reusable code that runs when called to perform a single, related action". Defined with the <b>def</b> keyword in Python: </span>
+                <pre>
+                    <code>
+                        def functionName():
+                            print("You've called the function")
+
                         functionName()
-                        
-                        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">myName</span><span class="hljs-params">(name)</span>:</span>
-                            print(<span class="hljs-string">"My name is"</span> + name)
-                            
-                        <span class="hljs-comment">#to set a default parameter value</span>
-                        
-                        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">myName</span><span class="hljs-params">(name = <span class="hljs-string">"Jimmy"</span>)</span>:</span> 
-                            print(<span class="hljs-string">"My name is"</span> + name)
-                        
-                        <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(a,b)</span>:</span> 
-                            <span class="hljs-keyword">return</span> a + b
+
+                        def myName(name):
+                            print("My name is" + name)
+
+                        #to set a default parameter value
+
+                        def myName(name = "Jimmy"):
+                            print("My name is" + name)
+
+                        def addTwoNumbers(a,b):
+                            return a + b
                     </code>
                 </pre>
-            </span>
             <br>
             <span>
                 RECURSION IS A BIG THING IN PYTHON! Function recursion = 'when a function calls itself'
