@@ -92,20 +92,19 @@
             </span>
             <br>
             <span>
-                To print use: 
-                <pre>                    <code class="hljs php">
-                        <span class="hljs-keyword">print</span>(<span class="hljs-string">"Hello World!"</span>) 
-                    </code>
-                </pre>
+                To print use:
             </span>
+            <pre>
+                <code>print("Hello World!") </code>
+            </pre>
             <br>
-            <span>Python uses new lines, rather than semicolons or brackets, to "complete a command". It also uses indentation (with whitespace) to define scope (as opposed to curly brackets). In other languages, indentation is for readability only - in Python it is very important! e.g. 
-                <pre>                    <code class="hljs php">
-                        <span class="hljs-keyword">if</span> <span class="hljs-number">5</span> &gt; <span class="hljs-number">2</span>: 
-                            <span class="hljs-keyword">print</span>(<span class="hljs-string">"Five is greater than two!"</span>)
-                    </code>
-                </pre>
-            </span>
+            <span>Python uses new lines, rather than semicolons or brackets, to "complete a command". It also uses indentation (with whitespace) to define scope (as opposed to curly brackets). In other languages, indentation is for readability only - in Python it is very important! e.g.</span>
+            <pre>
+                <code>
+                    if 5 > 2:
+                            print("Five is greater than two!")
+                </code>
+            </pre>
             <br>
             <span>
                 Variable = 'container for storing data value'. Python has no command for declaring a variable, just assign a value to the variable and it is created. Do not declared as any particular type (like int) and can even change type after declared
@@ -434,8 +433,7 @@
                 </pre>
             </span>
             <br>
-            <span id="While">
-                while loop: 
+            <span id="While"> while loop: </span>
                 <pre>                    <code class="hljs properties">
                         <span class="hljs-attr">i</span> = <span class="hljs-string">1</span>
                         <span class="hljs-attr">while</span> <span class="hljs-string">i &lt; 6:</span>
@@ -443,25 +441,28 @@
                           <span class="hljs-attr">i</span> <span class="hljs-string">+= 1</span>
                     </code>
                 </pre>
-                you can <b>break</b> a while loop (like in AHK): 
-                <pre>                    i = 1
+            <span> you can <b>break</b> a while loop (like in AHK): </span>
+            <pre>
+                <code>
+                    i = 1
                     while i &lt; 6:
                       print(i)
                       if i == 3:
                         break
                       i += 1
-                </pre>
-                You can use a <b>continue</b> statement to stop the iteration, and then 'continue' with the next iteration ==&gt; i.e. continue with the loop
-                <pre>                    <code class="hljs php">
-                        i = <span class="hljs-number">0</span>
-                        <span class="hljs-keyword">while</span> i &lt; <span class="hljs-number">6</span>:
-                          i += <span class="hljs-number">1</span> 
-                          <span class="hljs-keyword">if</span> i == <span class="hljs-number">3</span>:
-                            <span class="hljs-keyword">continue</span>
-                          <span class="hljs-keyword">print</span>(i)
-                    </code>
-                </pre>
-            </span>
+                </code>
+            </pre>
+            <span>You can use a <b>continue</b> statement to stop the iteration, and then 'continue' with the next iteration ==&gt; i.e. continue with the loop</span>
+            <pre>
+                <code>
+                        i = 0
+                        while i < 6:
+                          i += 1
+                          if i == 3:
+                            continue
+                          print(i)
+                </code>
+            </pre>
             <br>
             <span id="For">
                 For loops: 
