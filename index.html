@@ -129,7 +129,7 @@
                 </code>
             </pre>
             <br>
-            <span> Variable = 'container for storing data value'. Python has no command for declaring a variable, just assign a value to the variable and it is created. Do not declared as any particular type (like int) and can even change type after declared </span>
+            <span> Variable = 'container for storing data value'. Python has no command for declaring a variable, just assign a value to the variable (with assignment operator <b>=</b> and it is created. Python is not strongly typed. Variables can hold values of any type. Do not declare as any particular type (like int) and can even change type after declared </span>
             <pre>
                 <code>
                         x = 5
@@ -137,7 +137,7 @@
                         x = True
                 </code>
             </pre>
-            <span>The variable name: cannot start with a number (_ or a-zA-Z), are case-sensitive. </span>
+            <span>The variable name: cannot start with a number (_ or a-zA-Z), and are case-sensitive. There are two styles of naming variables: <b>camelCase</b> and <b>separating_using_underscore</b></span>
             <span>You can assign values to multiple variables in one line: </span>
                 <pre>
                     <code>x, y, z = 5, 10, 'Hello World!'</code>
@@ -146,34 +146,38 @@
                 <pre>
                     <code>x = z = 5</code>
                 </pre>
-            <span> there are three types of number-variables in python: </span>
-                <pre>                    <code class="hljs nginx">
-                        <span class="hljs-attribute">x</span> = <span class="hljs-number">5</span> <span class="hljs-comment">#this is an integer, a whole number</span>
-                        y = <span class="hljs-number">5</span>.<span class="hljs-number">7</span> <span class="hljs-comment">#this is a floating-point, a number with decimals</span>
-                        z = 7j <span class="hljs-comment">#this is a complex number</span>
+            <span> there are three types of number-variables ("number data types") in Python: </span>
+                <pre>
+                    <code>
+                        x = 5 #this is an integer, a whole number
+                        y = 5.7 #this is a floating-point, a number with decimals. double-precision as provided by the underlying C or Java implementation.
+                        z = 7j #this is a complex number, have a real and imaginary part accessed through the (read-only) attributes .real and .imag.
                     </code>
                 </pre>
             <span> to find out the type of variable, use the <b>test()</b> function: </span>
-                <pre>                    <code class="hljs bash">
+                <pre>
+                    <code>
                         x = 55.2832
-                        <span class="hljs-built_in">print</span>(<span class="hljs-built_in">test</span>(x)) <span class="hljs-comment">#returns class float</span>
+                        print(test(x)) #returns class float
                     </code>
                 </pre>
             <span> You can convert variables from one type to another using <b>int()</b>, <b>float()</b>, <b>complex()</b> and <b>str()</b> methods. You can also use these if you want to specify the type of variable. </span>
-                <pre>                    <code class="hljs perl">
-                        <span class="hljs-keyword">x</span> = <span class="hljs-number">33.22222</span> 
-                        <span class="hljs-keyword">print</span>(<span class="hljs-keyword">int</span>(<span class="hljs-keyword">x</span>)) <span class="hljs-comment">#returns 33</span>
-                        <span class="hljs-keyword">y</span> = <span class="hljs-keyword">int</span>(<span class="hljs-number">65.2342342</span>)
-                        <span class="hljs-keyword">print</span>(<span class="hljs-keyword">y</span>)
+                <pre>
+                    <code>
+                        x = 33.22222
+                        print(int(x)) #returns 33
+                        y = int(65.2342342)
+                        print(y)
                     </code>
                 </pre>
             <span>There's no char variable type! A single character variable = just a string with length = 1. </span>
             <br>
             <span>
                 To comment a line use: 
-                <pre>                    <code class="hljs php">
-                        <span class="hljs-comment">#this is a comment</span>
-                        <span class="hljs-keyword">print</span>(<span class="hljs-string">"Hello World"</span>) <span class="hljs-comment">#this is also a comment </span>
+                <pre>
+                    <code>
+                        #this is a comment
+                        print("Hello World") #this is also a comment
                     </code>
                 </pre>
                 No real syntax for multi-line comments, but you can use a string-literal (ignored if not assigned to a variable) 
@@ -275,155 +279,157 @@
                 </pre>
             </span>
             <br> 
-            <span id="Data">
-                There are four 'collection data types' in Python.
+            <span id="Data"> There are four 'collection data types' or 'sequences' in Python. A sequence is the generic term for finite, ordered sets indexed by non-negative indices. </span>
                 <ul>
-                    <li>Lists (equiv. to an array): ordered, changeable, allows duplicate elements</li>
-                    <pre>                        <code class="hljs python">
-                            myList = [<span class="hljs-string">'apples'</span>, <span class="hljs-string">'oranges'</span>, <span class="hljs-string">'bananas'</span>, <span class="hljs-string">'tomatoes'</span>] <span class="hljs-comment">#a list</span>
-                            
-                            <span class="hljs-comment">#using the list constructor instead (NB double brackets): </span>
-                            
-                            myList = list((<span class="hljs-string">'apples'</span>, <span class="hljs-string">'oranges'</span>, <span class="hljs-string">'bananas'</span>, <span class="hljs-string">'tomatoes'</span>))
-                            
-                            print(myList[<span class="hljs-number">1</span>]) <span class="hljs-comment">#prints 'oranges'</span>
-                            
-                            <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> myList: 
+                    <li>Lists (equiv. to an array): ordered, changeable, allows duplicate elements. Mutable! Formed by placing a comma separated list of expressions in curly brackets.</li>
+                    <pre>
+                        <code>
+                          myList = ['apples', 'oranges', 'bananas', 'tomatoes'] #a list
+
+                            #using the list constructor instead (NB double brackets):
+
+                            myList = list(('apples', 'oranges', 'bananas', 'tomatoes'))
+
+                            print(myList[1]) #prints 'oranges'
+
+                            for x in myList:
                                 print(x)
-                                
-                            <span class="hljs-comment">#check if element is present in list </span>
-                            <span class="hljs-keyword">if</span> <span class="hljs-string">'apples'</span> <span class="hljs-keyword">in</span> myList: 
-                                print(<span class="hljs-string">'yes'</span>)
-                                
-                            <span class="hljs-comment">#list length </span>
-                            <span class="hljs-keyword">print</span> (len(myList))
-                            
-                            <span class="hljs-comment">#add elements to the end of the array (like .push())</span>
-                            myList.append(<span class="hljs-string">'strawberries'</span>)
-                            
-                            <span class="hljs-comment">#to insert element at a specific index </span>
-                            myList.insert(<span class="hljs-number">1</span>, <span class="hljs-string">'cherries'</span>)
-                            
-                            <span class="hljs-comment">#to remove a specific element </span>
-                            myList.remove(<span class="hljs-string">'oranges'</span>)
-                            
-                            <span class="hljs-comment">#to remove a specific index (if non-specified removes last element):</span>
-                            myList.pop(<span class="hljs-number">0</span>) <span class="hljs-keyword">or</span> 
-                            <span class="hljs-keyword">del</span> myList[<span class="hljs-number">0</span>]
-                            
-                            <span class="hljs-comment">#to completely empty the list </span>
+
+                            #check if element is present in list
+                            if 'apples' in myList:
+                                print('yes')
+
+                            #list length
+                            print (len(myList))
+
+                            #add elements to the end of the array (like .push())
+                            myList.append('strawberries')
+
+                            #to insert element at a specific index
+                            myList.insert(1, 'cherries')
+
+                            #to remove a specific element
+                            myList.remove('oranges')
+
+                            #to remove a specific index (if non-specified removes last element):
+                            myList.pop(0) or
+                            del myList[0]
+
+                            #to completely empty the list
                             myList.clear()
-                            
-                            <span class="hljs-comment">#to copy a list use: </span>
+
+                            #to copy a list use:
                             newList = myList.copy()
                         </code>
                     </pre>
-                    <li>Tuples: ordered, UNCHANGEABLE, allows duplicate elements. ROUND BRACKETS!</li>
-                    <pre>                        <code class="hljs python">
-                            mytuple = (<span class="hljs-string">'printer'</span>, <span class="hljs-string">'stapler'</span>, <span class="hljs-string">'computer'</span>) <span class="hljs-comment">#OR</span>
-                            mytuple = tuple((<span class="hljs-string">'printer'</span>, <span class="hljs-string">'stapler'</span>, <span class="hljs-string">'computer'</span>))
-                            
-                            print(mytuple[<span class="hljs-number">0</span>]) <span class="hljs-comment">#logs 'printer'</span>
-                            
-                            <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> mytuple:   <span class="hljs-comment">#to loop through a tuple </span>
+                    <li>Tuples: ordered, UNCHANGEABLE, allows duplicate elements. IMMUTABLE. ROUND BRACKETS!</li>
+                    <pre>
+                        <code>
+                            mytuple = ('printer', 'stapler', 'computer') #OR
+                            mytuple = tuple(('printer', 'stapler', 'computer'))
+
+                            print(mytuple[0]) #logs 'printer'
+
+                            for x in mytuple:   #to loop through a tuple
                                 print(x)
-                                
-                            <span class="hljs-keyword">if</span> <span class="hljs-string">'printer'</span> exists <span class="hljs-keyword">in</span> mytuple: 
-                                print(<span class="hljs-string">'yes, there is a printer here'</span>)
-                            
-                            print(len(mytuple)) <span class="hljs-comment">#returns 3 </span>
-                            
-                            <span class="hljs-keyword">del</span> mytuple <span class="hljs-comment">#you cannot remove or add items to a tuple, but you can delete the whole thing</span>
+
+                            if 'printer' exists in mytuple:
+                                print('yes, there is a printer here')
+
+                            print(len(mytuple)) #returns 3
+
+                            del mytuple #you cannot remove or add items to a tuple, but you can delete the whole thing
                         </code>
                     </pre>
-                    <li>Set: unordered, unindexed, NO duplicate elements. CURLY BRACKETS</li>
-                    <pre>                        <code class="hljs python">
-                            mySet = {<span class="hljs-string">'Harry'</span>, <span class="hljs-string">'Mark'</span>, <span class="hljs-string">'Tom'</span>} <span class="hljs-comment">#or </span>
-                            mySet = set((<span class="hljs-string">'Harry'</span>, <span class="hljs-string">'Mark'</span>, <span class="hljs-string">'Tom'</span>))
-                            
-                            <span class="hljs-comment">#you cannot get elements by their position/index, because sets are unordered/indexed </span>
-                            
-                            <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> mySet: <span class="hljs-comment">#loop through the set </span>
-                                print(x) 
-                                
-                            print(<span class="hljs-string">'Mark'</span> <span class="hljs-keyword">in</span> mySet) <span class="hljs-comment">#returns true </span>
-                            
-                            mySet.add(<span class="hljs-string">'John-John'</span>) <span class="hljs-comment">#add a single element </span>
-                            
-                            mySet.update(<span class="hljs-string">'Sam'</span>, <span class="hljs-string">'Nick'</span>, <span class="hljs-string">'James'</span>) <span class="hljs-comment">#add multiple elements at once </span>
-                            
-                            print(len(mySet)) <span class="hljs-comment">#length of the set </span>
-                            
-                            mySet.remove(<span class="hljs-string">'Harry'</span>) <span class="hljs-comment">#or </span>
-                            mySet.discard(<span class="hljs-string">'Harry'</span>) <span class="hljs-comment">#to remove an element </span>
-                            
-                            mySet.pop() <span class="hljs-comment">#removes the last element from the set ==&gt; unordered, you do not know what this will be. </span>
-                            
-                            mySet.clear() <span class="hljs-comment">#empties the set </span>
-                            
-                            <span class="hljs-keyword">del</span> mySet <span class="hljs-comment">#deletes the set completely </span>
+                    <li>Set: unordered, unindexed, NO duplicate elements. CURLY BRACKETS. Cannot be indexed, but can be iterated over. <b>len()</b> says how many things in a set. </li>
+                    <pre>
+                        <code>
+                            mySet = {'Harry', 'Mark', 'Tom'} #or
+                            mySet = set(('Harry', 'Mark', 'Tom'))
+
+                            #you cannot get elements by their position/index, because sets are unordered/indexed
+
+                            for x in mySet: #loop through the set
+                                print(x)
+
+                            print('Mark' in mySet) #returns true
+
+                            mySet.add('John-John') #add a single element
+
+                            mySet.update('Sam', 'Nick', 'James') #add multiple elements at once
+
+                            print(len(mySet)) #length of the set
+
+                            mySet.remove('Harry') #or
+                            mySet.discard('Harry') #to remove an element
+
+                            mySet.pop() #removes the last element from the set ==> unordered, you do not know what this will be.
+
+                            mySet.clear() #empties the set
+
+                            del mySet #deletes the set completely
                         </code>
                     </pre>
                     <li>Dictionary (equiv. to an object): unordered, changeable and indexed. NO duplicate elements.</li>
-                    <pre>                        <code class="hljs coffeescript">
+                    <pre>
+                        <code>
                             myDict = {
-                            <span class="hljs-string">'name'</span>: <span class="hljs-string">'Lightning McQueen'</span>, 
-                            <span class="hljs-string">'type'</span>: <span class="hljs-string">'racecar'</span>, 
-                            <span class="hljs-string">'age'</span>: <span class="hljs-number">4</span>, 
-                            <span class="hljs-string">'winner'</span>: <span class="hljs-literal">true</span>
+                            'name': 'Lightning McQueen',
+                            'type': 'racecar',
+                            'age': 4,
+                            'winner': true
                             }
-                            
-                            <span class="hljs-keyword">or</span> 
-                            
-                            dict(name=<span class="hljs-string">"Lightning McQueen"</span>, type=<span class="hljs-string">"racecar"</span>, age=<span class="hljs-number">4</span>, winner = <span class="hljs-literal">true</span>)
-                            
-                            myDict[<span class="hljs-string">'age'</span>] <span class="hljs-comment">#returns 4 </span>
-                            myDict.get(<span class="hljs-string">'age'</span>) <span class="hljs-comment">#returns the value of the 'age' key </span>
-                            
-                            myDict[<span class="hljs-string">'age'</span>] = <span class="hljs-number">25</span> <span class="hljs-comment">#changes the value of 'age' to 25 </span>
-                            
-                            <span class="hljs-comment">#to loop through the dictionary/object keys </span>
-                            <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> myDict: 
-                                <span class="hljs-built_in">print</span>(x)
-                            
-                            <span class="hljs-comment">#to loop through the dictionary values</span>
-                            <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> myDict:
-                                <span class="hljs-built_in">print</span>(myDict[x])
-                            
-                            <span class="hljs-comment">#or </span>
-                            <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> myDict.values(): 
-                                <span class="hljs-built_in">print</span>(x)
-                                
-                            <span class="hljs-comment">#to loop through dictionary keys and values</span>
-                            <span class="hljs-keyword">for</span> x, y <span class="hljs-keyword">in</span> myDict.items(): 
-                                <span class="hljs-built_in">print</span>(x,y) 
-                            
-                            <span class="hljs-comment">#check if key exists</span>
-                            <span class="hljs-keyword">if</span> <span class="hljs-string">'age'</span> <span class="hljs-keyword">in</span> myDict: 
-                                <span class="hljs-built_in">print</span>(<span class="hljs-string">'cool'</span>) 
-                            
-                            <span class="hljs-comment">#to determine how many items (key-value pairs) the dictionary/object has </span>
-                            <span class="hljs-built_in">print</span>(len(myDict))
-                            
-                            <span class="hljs-comment">#to remove items using a specific key </span>
-                            myDict.pop(<span class="hljs-string">'age'</span>) 
-                            <span class="hljs-comment">#or </span>
-                            del myDict[<span class="hljs-string">'age'</span>]
-                            
-                            <span class="hljs-comment">#to remove the last inserted item </span>
+
+                            or
+
+                            dict(name="Lightning McQueen", type="racecar", age=4, winner = true)
+
+                            myDict['age'] #returns 4
+                            myDict.get('age') #returns the value of the 'age' key
+
+                            myDict['age'] = 25 #changes the value of 'age' to 25
+
+                            #to loop through the dictionary/object keys
+                            for x in myDict:
+                                print(x)
+
+                            #to loop through the dictionary values
+                            for x in myDict:
+                                print(myDict[x])
+
+                            #or
+                            for x in myDict.values():
+                                print(x)
+
+                            #to loop through dictionary keys and values
+                            for x, y in myDict.items():
+                                print(x,y)
+
+                            #check if key exists
+                            if 'age' in myDict:
+                                print('cool')
+
+                            #to determine how many items (key-value pairs) the dictionary/object has
+                            print(len(myDict))
+
+                            #to remove items using a specific key
+                            myDict.pop('age')
+                            #or
+                            del myDict['age']
+
+                            #to remove the last inserted item
                             myDict.popItem()
-                            
-                            <span class="hljs-comment">#to empty a dictionary </span>
+
+                            #to empty a dictionary
                             myDict.clear()
-                            
-                            <span class="hljs-comment">#to copy a dictionary </span>
-                            newDict = myDict.copy() <span class="hljs-keyword">or</span> 
+
+                            #to copy a dictionary
+                            newDict = myDict.copy() or
                             newDict = dict(myDict)
-                            <span class="hljs-comment">#remember, if you use newDict = myDict, newDict will simply be a reference to myDict, and any changes to myDict will also occur in newDict </span>
+                            #remember, if you use newDict = myDict, newDict will simply be a reference to myDict, and any changes to myDict will also occur in newDict
                         </code>
                     </pre>
                 </ul>
-            </span>
             <br>
             <span>
                 If-else statements: 
