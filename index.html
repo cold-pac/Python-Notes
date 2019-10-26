@@ -80,6 +80,7 @@
                 <li><a href="#Elemindex">Index of an element</a></li>
                 <li><a href="#listComprehension">List comprehensions</a></li>
                 <li><a href="#RegEx">Regular Expressions</a></li>
+                <li><a href="#sorting">Sorting</a></li>
             </ol>
         </div>
         <div id="container">
@@ -715,13 +716,72 @@
             <span>Can do this with strings too, which are treated like lists in Python</span>
             <br>
             <span id="RegEx">RegEx:</span>
-            <pre>                <code class="hljs python">
-                    <span class="hljs-keyword">import</span> re <span class="hljs-comment">#have to import the regex module to use it </span>
-                    
-                    example_string = <span class="hljs-string">"Hello World!"</span>
-                    
-                    <span class="hljs-comment">#to replace all the matches in a string with something else </span>
-                    example_string = re.sub(<span class="hljs-string">"[aeiou]"</span>, <span class="hljs-string">""</span>, example_string)
+            <pre>
+                <code>
+                    import re #have to import the regex module to use it
+
+                    example_string = "Hello World!"
+
+                    #to replace all the matches in a string with something else
+                    example_string = re.sub("[aeiou]", "", example_string)
+                </code>
+            </pre>
+            <br>
+            <span id="sorting">Sorting: you can use the <b>list.sort(key=..., reverse=...)</b> method or Python's built in function <b>sorted(list, key=..., reverse=...)</b></span>
+            <pre>
+                <code>
+                    #sorting alphabetically
+                    vowels = ['e', 'a', 'u', 'o', 'i']
+                    vowels.sort()
+
+                    #sorting in reverse alphabetical order
+                    vowels = ['e', 'a', 'u', 'o', 'i']
+                    vowels.sort(reverse=True)
+                </code>
+            </pre>
+            <span>You can sort by your own 'key' parameter</span>
+            <pre>
+                <code>
+                    #sort by length
+                    words = ['mobius', 'table', 'hippopotamus']
+                    words.sort(key=len)
+
+####################################################################################
+                    #use a custom key
+                    def takeSecond(elem):
+                    return elem[1]
+
+                    # random list
+                    random = [(2, 2), (3, 4), (4, 1), (1, 3)]
+
+                    # sort list with key
+                    random.sort(key=takeSecond)
+                </code>
+            </pre>
+            <span>To use your own callback function to sort (more difficult in Python 3)</span>
+            <pre>
+                <code>
+                    #for Python 2.x
+                    def greater(a, b):
+                        if (a % b) % 2 == 0:
+                            return 1
+                        return -1
+
+                    x = [2,7,5,10,30,15]
+
+                    print(sorted(x, cmp=greater))
+
+                    #for Python 3
+                    import functools
+
+                    def greater(a, b):
+                    if (a % b) % 2 == 0:
+                        return 1
+                    return -1
+
+                    x = [2,7,5,10,30,15]
+
+                    print(sorted(x, key=functools.cmp_to_key(greater)))
                 </code>
             </pre>
         </div>
