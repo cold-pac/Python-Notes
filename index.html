@@ -46,8 +46,10 @@
             top: 200px;
             left: 50px;
         } #contents h2 {
-            text-align: center; 
-            display: none; 
+            text-align: center;
+            font-size: 1em;
+            width: 10vw;
+            font-weight: 400;
         }@media (orientation:portrait) {
             #container {
                 width: 100vw; 
@@ -67,10 +69,32 @@
         }
               
       </style>
+    <script>
+        let displayed = false;
+        function displayOptions (change) {
+            if (change) {
+                document.getElementById('optionsMenu').style.display = 'block';
+            } else {
+                document.getElementById('optionsMenu').style.display = 'none';
+            }
+        }
+
+        let startingSpace = 40;
+        function increaseSpacer() {
+            startingSpace+=10;
+            Array.from(document.getElementsByTagName("br")).forEach((element) => {element.outerHTML = `<div class = 'spacer' style = 'height: ${startingSpace}px'></div>`;});
+            Array.from(document.getElementsByClassName("spacer")).forEach((element) => {element.outerHTML = `<div class = 'spacer' style = 'height: ${startingSpace}px'></div>`;});
+        }
+    </script>
     </head>
     <body>
         <div id="contents">
-            <h2>Contents</h2>
+            <h2 style = "cursor: pointer;">
+                <div onclick = "console.log(displayed);displayed = !displayed; displayOptions(displayed)" >[Options]</div>
+                <ul id = 'optionsMenu' style = 'display:none'>
+                    <li onclick = "increaseSpacer()">Increase spacing</li>
+                </ul>
+            </h2>
             <ol id="TOC">
                 <li><a href="#Data">Collection data types</a></li>
                 <li><a href="#While">While loops</a></li>
