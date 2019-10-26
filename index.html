@@ -85,6 +85,10 @@
             Array.from(document.getElementsByTagName("br")).forEach((element) => {element.outerHTML = `<div class = 'spacer' style = 'height: ${startingSpace}px'></div>`;});
             Array.from(document.getElementsByClassName("spacer")).forEach((element) => {element.outerHTML = `<div class = 'spacer' style = 'height: ${startingSpace}px'></div>`;});
         }
+
+        function hideContents() {
+            document.getElementById("contents").style.display = 'none';
+        }
     </script>
     </head>
     <body>
@@ -93,6 +97,7 @@
                 <div onclick = "console.log(displayed);displayed = !displayed; displayOptions(displayed)" >[Options]</div>
                 <ul id = 'optionsMenu' style = 'display:none'>
                     <li onclick = "increaseSpacer()">Increase spacing</li>
+                    <li onclick ="hideContents()">Hide contents</li>
                 </ul>
             </h2>
             <ol id="TOC">
@@ -105,6 +110,7 @@
                 <li><a href="#listComprehension">List comprehensions</a></li>
                 <li><a href="#RegEx">Regular Expressions</a></li>
                 <li><a href="#sorting">Sorting</a></li>
+                <li><a href="#libraries">Libraries</a></li>
             </ol>
         </div>
         <div id="container">
@@ -114,8 +120,14 @@
             <br>
             <span>Jupyter is a really good IDE to use for Python. Use the command 'Jupyter notebook' in cmd to open it. To run a program in jupyter notebook use <b>!python filename.py</b> rather than just <b>python</b> (like in cmd)</span>
             <br>
-            <span>
-                To print use:
+            <span>Python comes with 'built in' functions. To print use: <b>print()</b>
+                <ul>
+                    <li>print - for printing</li>
+                    <li>min, max, round, abs, pow — simple numeric operations</li>
+                    <li>reversed, sorted, filter, map — for manipulating sequences and returning a new sequence</li>
+                    <li>list, tuple, str, bytes, bytearray, set, fronzenset, dict, complex, bool, int — for creating basic objects</li>
+                    <li>help — for getting the documention associated with a function e.g. <b>help(print)</b> (help() with no arguments enters an interactive help session)</li>
+                </ul>
             </span>
             <pre>
                 <code>print("Hello World!") </code>
@@ -370,7 +382,7 @@
                             del mySet #deletes the set completely
                         </code>
                     </pre>
-                    <li>Dictionary (equiv. to an object): unordered, changeable and indexed. NO duplicate elements.</li>
+                    <li>Dictionary (equiv. to an object): unordered, changeable and indexed. NO duplicate elements. "mutable mapping types containing (key, value) associations."</li>
                     <pre>
                         <code>
                             myDict = {
@@ -427,6 +439,22 @@
                             newDict = myDict.copy() or
                             newDict = dict(myDict)
                             #remember, if you use newDict = myDict, newDict will simply be a reference to myDict, and any changes to myDict will also occur in newDict
+
+                            ##################################################################################################################
+                            IMPORTANT
+
+                            dict_1 = {'Age': 22, 1: 5, 'Name': 'Bob'}
+
+                            #The keys of a dictionary are accessed as an iterable using the .keys() method.
+                            dict_1.keys()
+
+                            #The values are likewise accessed using .values().
+                            dict_1.values()
+
+                            #To iterate over both in lock-step use .items().
+                            dict_1.items()
+
+                            #Do not rely on .keys() and .values() returning associated objects in the same order, use .items().
                         </code>
                     </pre>
                 </ul>
@@ -552,7 +580,7 @@
             </span>
             <br>
             <span>
-                Function = "A block of organised, reusable code that runs when called to perform a single, related action". Defined with the <b>def</b> keyword in Python: </span>
+                Function = "A block of organised, reusable code that runs when called to perform a single, related action". Functions always return something. If you don't specify a value they return the special value None. Defined with the <b>def</b> keyword in Python: </span>
                 <pre>
                     <code>
                         def functionName():
