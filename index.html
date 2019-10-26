@@ -95,7 +95,7 @@
         <div id="contents">
             <h2 style = "cursor: pointer;">
                 <div onclick = "console.log(displayed);displayed = !displayed; displayOptions(displayed)" >[Options]</div>
-                <ul id = 'optionsMenu' style = 'display:none'>
+                <ul id = 'optionsMenu' style = 'display:none; text-align: left; font-size: 0.8em; list-style-type: none;'>
                     <li onclick = "increaseSpacer()">Increase spacing</li>
                     <li onclick ="hideContents()">Hide contents</li>
                 </ul>
@@ -334,7 +334,7 @@
                             newList = myList.copy()
                         </code>
                     </pre>
-                    <li>Tuples: ordered, UNCHANGEABLE, allows duplicate elements. IMMUTABLE. ROUND BRACKETS!</li>
+                    <li>Tuples: ordered, UNCHANGEABLE/IMMUTABLE, allows duplicate elements. ROUND BRACKETS!</li>
                     <pre>
                         <code>
                             mytuple = ('printer', 'stapler', 'computer') #OR
@@ -353,7 +353,7 @@
                             del mytuple #you cannot remove or add items to a tuple, but you can delete the whole thing
                         </code>
                     </pre>
-                    <li>Set: unordered, unindexed, NO duplicate elements. CURLY BRACKETS. Cannot be indexed, but can be iterated over. <b>len()</b> says how many things in a set. </li>
+                    <li>Set: unordered, unindexed, NO duplicate elements. CURLY BRACKETS. Cannot be indexed, but can be iterated over. <b>len()</b> tells you how many things in a set. </li>
                     <pre>
                         <code>
                             mySet = {'Harry', 'Mark', 'Tom'} #or
@@ -799,7 +799,7 @@
                     words = ['mobius', 'table', 'hippopotamus']
                     words.sort(key=len)
 
-####################################################################################
+#####################################################################################################################################################
                     #use a custom key
                     def takeSecond(elem):
                     return elem[1]
