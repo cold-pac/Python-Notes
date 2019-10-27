@@ -81,7 +81,7 @@
 
         let startingSpace = 40;
         function increaseSpacer() {
-            startingSpace+=10;
+            startingSpace+=20;
             Array.from(document.getElementsByTagName("br")).forEach((element) => {element.outerHTML = `<div class = 'spacer' style = 'height: ${startingSpace}px'></div>`;});
             Array.from(document.getElementsByClassName("spacer")).forEach((element) => {element.outerHTML = `<div class = 'spacer' style = 'height: ${startingSpace}px'></div>`;});
         }
@@ -111,6 +111,7 @@
                 <li><a href="#RegEx">Regular Expressions</a></li>
                 <li><a href="#sorting">Sorting</a></li>
                 <li><a href="#libraries">Libraries</a></li>
+                <li><a href="#DataFrames">DataFrames</a></li>
             </ol>
         </div>
         <div id="container">
@@ -837,6 +838,60 @@
                     print(sorted(x, key=functools.cmp_to_key(greater)))
                 </code>
             </pre>
+            <br>
+            <span id = "libraries">Python has a large selection of libraries - either included as part of the standard installation, with more available on the Python Packaging Index (PyPI). To use functions or classes from a library, import the library with the <b>import</b> statement. Access library contents using the name of the library. For help using any standard library, always check the <a href ='https://docs.python.org/3/' target="_blank">Python Documentation</a>, or use <b>help()</b>. There is a huge list of standard libraries (sys,os, re (RegEx), datetime, calender, statistics...)</span>
+            <pre>
+                <code>
+                    import math
+
+                    print('pi is', math.pi)
+                </code>
+            </pre>
+            <span>To save typing the library name over and over again, you can give the library an 'alias' (you see this a lot)</span>
+            <pre>
+                <code>
+                    # Use an alias for the library "pandas".
+                    import pandas as pd
+                </code>
+            </pre>
+            <span>If you only want a few specific things from a library (or module), import selectively like this: NB: these names will be directly available without having to access them using the module name</span>
+            <pre>
+                <code>
+                    from math import log, e, pi
+
+                    print('e is', e)
+                    print('log(e) is', log(e))
+                </code>
+            </pre>
+            <span>To import everything from a module, although modules are designed to keep names separate, and doing this can lead to name clashes:</span>
+            <pre>
+                <code>from math import *</code>
+            </pre>
+            <span>You can download and compile Python packages with <b>pip</b> (the Python package-management system) in the command line. Give pip the list of packages you want to install and it will install them. <b>pip list</b> shows you the packages currently installed, <b>pip show</b> will show you information about a specific installed package, <b>pip search</b> lets you search PyPI for packages</span>
+            <br>
+            <span id = "DataFrames">To use Pandas <b>DataFrame</b> data types, install pandas (as a package): <b>pip install pandas</b>, and import it. Pandas is built on top of <b>numpy</b></span>
+            <pre>
+                <code>
+                    import pandas as pd
+                    import numpy as np
+                </code>
+            </pre>
+            <span>Pandas provides two data types - Series (which is homogeneous or 1D) and DataFrames which are a 2D, size mutable tabular data structure with labeled axes (rows and columns) = a way to store data in rectangular grids that can easily be overviewed</span>
+            <span>To create a series, pass a list to the Series constructor</span>
+            <pre>
+                <code>
+                    s = pd.Series(['a','b','c','d','e','f'])
+                    """
+                    0    a
+                    1    b
+                    2    c
+                    3    d
+                    4    e
+                    """
+                    s = pd.Series(np.random.randn(5)) # 5 random numbers
+                </code>
+            </pre>
+            <span></span>
         </div>
     </body>
     </html>
