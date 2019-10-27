@@ -891,7 +891,94 @@
                     s = pd.Series(np.random.randn(5)) # 5 random numbers
                 </code>
             </pre>
-            <span></span>
+            <span>You can supply a list of indices to be used when you initialise a new Series</span>
+            <pre>
+                <code>
+                    s = pd.Series([1, 2, 3, 4, 5], index=['a', 'b', 'c', 'd', 'e'])
+                    """
+                    a    1
+                    b    2
+                    c    3
+                    d    4
+                    e    5
+                    """
+                </code>
+            </pre>
+            <span>To specify a single value to be repeated (a scalar value), give a list of indices and the scalar will be repeated as necessary</span>
+            <pre>
+                <code>
+                    s = pd.Series(5.0, index=range(5)) # range(5) -> (0, 1, 2, 3, 4)
+                    print(s)
+                    """
+                    0    5.0
+                    1    5.0
+                    2    5.0
+                    3    5.0
+                    4    5.0
+                    """
+                </code>
+            </pre>
+            <span>You can multiply a Series</span>
+            <pre>
+                <code>
+                    s = pd.Series(range(5))
+                    """
+                    0    0
+                    1    1
+                    2    2
+                    3    3
+                    4    4
+                    """
+                    print(s*2)
+                    """
+                    0    0
+                    1    2
+                    2    4
+                    3    6
+                    4    8
+                    """
+                </code>
+            </pre>
+            <span>Operations on series will line up by indices. The result will contain the union of all the indices.</span>
+            <pre>
+                <code>
+                    a = pd.Series(5, range(-3, 3))
+                    print(a)
+                    """
+                    -3    5
+                    -2    5
+                    -1    5
+                    0     5
+                    1     5
+                    2     5
+                    """
+
+                    b = pd.Series(10, range(6))
+                    print(b)
+                    """
+                    0    10
+                    1    10
+                    2    10
+                    3    10
+                    4    10
+                    5    10
+                    """
+
+                    c = a + b
+                    print(c)
+                    """
+                    -3     NaN
+                    -2     NaN
+                    -1     NaN
+                     0    15.0
+                     1    15.0
+                     2    15.0
+                     3     NaN
+                     4     NaN
+                     5     NaN
+                    """
+                </code>
+            </pre>
         </div>
     </body>
     </html>
