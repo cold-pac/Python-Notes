@@ -16,10 +16,12 @@
               font-size: 1.03em;
               font-family: Helvetica; 
                
-        } img[src*="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {
+        }
+        img[src*="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {
               display: none; 
             
-        } #container {
+        }
+        #container {
             display: flex; 
             flex-direction: column;
             // height: 100vh; 
@@ -28,29 +30,55 @@
             margin: 20px; 
             position: relative; 
             left: 280px;
-        } pre code {
+        }
+        pre code {
             // background-color: #eee;
             border: 1px solid #999;
             border-left: 2px solid green;
             margin-top: -30px;
             margin-bottom: -60px;
-        } b {
+        }
+        b {
             background: #ebebeb; 
             font-family: Monospace;
             padding: 2px;
             color: #f55442; 
             font-weight: 600;
-        } #contents {
+        }
+        table {
+            width: 50%;
+            position: relative;
+            left: 50%;
+            margin: 4vh;
+            margin-left: -25%;
+            font-size: 1.5em;
+        }
+        tr:nth-child(even) {
+            background-color: #e6e6e6;
+        }
+        td {
+            text-align: center;
+        }
+        td:nth-child(2n) {
+            background: #ebebeb;
+            font-family: Monospace;
+            padding: 2px;
+            color: #f55442;
+            font-weight: 600;
+        }
+        #contents {
             position: fixed; 
             display: block; 
             top: 200px;
             left: 50px;
-        } #contents h2 {
+        }
+        #contents h2 {
             text-align: center;
             font-size: 1em;
             width: 10vw;
             font-weight: 400;
-        }@media (orientation:portrait) {
+        }
+        @media (orientation:portrait) {
             #container {
                 width: 100vw; 
                 position: static; 
@@ -86,8 +114,16 @@
             Array.from(document.getElementsByClassName("spacer")).forEach((element) => {element.outerHTML = `<div class = 'spacer' style = 'height: ${startingSpace}px'></div>`;});
         }
 
+
         function hideContents() {
             document.getElementById("contents").style.display = 'none';
+        }
+
+        function hideContentsMove() {
+            document.getElementById("contents").style.display = 'none';
+            document.getElementById("container").style.left = "50%";
+            document.getElementById("container").style.marginLeft = "-600px";
+
         }
     </script>
     </head>
@@ -98,6 +134,7 @@
                 <ul id = 'optionsMenu' style = 'display:none; text-align: left; font-size: 0.8em; list-style-type: none;'>
                     <li onclick = "increaseSpacer()">Increase spacing</li>
                     <li onclick ="hideContents()">Hide contents</li>
+                    <li onclick ="hideContentsMove()">Hide + move</li>
                 </ul>
             </h2>
             <ol id="TOC">
@@ -111,7 +148,8 @@
                 <li><a href="#RegEx">Regular Expressions</a></li>
                 <li><a href="#sorting">Sorting</a></li>
                 <li><a href="#libraries">Libraries</a></li>
-                <li><a href="#DataFrames">DataFrames</a></li>
+                <li><a href="#Series">Pandas Series</a></li>
+                <li><a href="#DataFrames">Pandas DataFrames</a></li>
             </ol>
         </div>
         <div id="container">
@@ -869,14 +907,14 @@
             </pre>
             <span>You can download and compile Python packages with <b>pip</b> (the Python package-management system) in the command line. Give pip the list of packages you want to install and it will install them. <b>pip list</b> shows you the packages currently installed, <b>pip show</b> will show you information about a specific installed package, <b>pip search</b> lets you search PyPI for packages</span>
             <br>
-            <span id = "DataFrames">To use Pandas <b>DataFrame</b> data types, install pandas (as a package): <b>pip install pandas</b>, and import it. Pandas is built on top of <b>numpy</b></span>
+            <span id = "Series">To use Pandas <b>Series</b> and <b>DataFrame</b> data types, install pandas (as a package): <b>pip install pandas</b>, and import it. Pandas is built on top of <b>numpy</b></span>
             <pre>
                 <code>
                     import pandas as pd
                     import numpy as np
                 </code>
             </pre>
-            <span>Pandas provides two data types - Series (which is homogeneous or 1D) and DataFrames which are a 2D, size mutable tabular data structures with labeled axes (rows and columns) = a way to store data in rectangular grids that can easily be overviewed</span>
+            <span>Pandas provides two data types - Series = homogeneous or 1D</span>
             <span>To create a series, pass a list to the Series constructor</span>
             <pre>
                 <code>
@@ -977,6 +1015,148 @@
                      4     NaN
                      5     NaN
                     """
+                </code>
+            </pre>
+            <span id = "DataFrames">DataFrames are a 2D, size mutable tabular data structures with labeled axes (rows and columns) = a way to store data in rectangular grids that can easily be overviewed. Series contain 1D data. DataFrames contain 2D data: a dict/object-like collection of named Series</span>
+            <span>DataFrames accepts many kinds of inputs </span>
+            <pre>
+                <code>
+                    d = {'one' : pd.Series([1., 2., 3.], index=['a', 'b', 'c']), 'two' : pd.Series([10., 20., 30., 40.], index=['a', 'b', 'c', 'd'])}
+                    print(d)
+
+                    """
+                    {'one': a    1.0
+                    b    2.0
+                    c    3.0
+                    dtype: float64, 'two': a    10.0
+                    b    20.0
+                    c    30.0
+                    d    40.0
+                    dtype: float64}
+                    """
+
+                    #to create a table of this data:
+
+                    pd.DataFrame(d, index=['d', 'b', 'a'])
+
+                        one	two
+                d	NaN	40.0
+                b	2.0	20.0
+                a	1.0	10.0
+
+                    pd.DataFrame(d, index=['d', 'b', 'a'], columns=['two', 'three'])
+
+                        two	three
+                d	40.0	NaN
+                b	20.0	NaN
+                a	10.0	NaN
+                </code>
+            </pre>
+            <span>A list of dicts (objects) is treated as row-wise data </span>
+            <pre>
+                <code>
+                    data2 = [{'a': 1, 'b': 2}, {'a': 5, 'b': 10, 'c': 20}]
+                    pd.DataFrame(data2)
+
+                    	a	b	c
+                    0	1	2	NaN
+                    1	5	10	20.0
+
+                    pd.DataFrame(data2, index=['first', 'second'])
+
+                    	a	b	c
+                first	1	2	NaN
+                second	5	10	20.0
+
+
+                    pd.DataFrame(data2, columns=['a', 'b'])
+
+                    	a	b
+                    0	1	2
+                    1	5	10
+                </code>
+            </pre>
+            <span>initialising a DataFrame from a Series gives a DataFrame with the same index as the input Series, and with one column whose name is the original name of the Series (only if no other column name is provided).</span>
+            <span>Summary of indexing and selection of dataframes (table): </span>
+            <table>
+                <tr><th>Operation</th><th>Syntax</th><th>Result</th></tr>
+                <tr><td>Select Column</td><td>df[col]</td><td>Series</td></tr>
+                <tr><td>Select row by label</td><td>df.loc[label]</td><td>Series</td></tr>
+                <tr><td>Select row by integer location</td><td>df.iloc[loc]</td><td>Series</td></tr>
+                <tr><td>Slice rows</td><td>df[5:10]</td><td>DataFrame</td></tr>
+                <tr><td>Slice rows by boolean vector</td><td>df[bool_vec]</td><td>DataFrame</td></tr>
+            </table>
+            <span>For DataFrame operations data will align by column name and row label.</span>
+            <pre>
+                <code>
+                    df = pd.DataFrame(np.random.randn(10, 4), columns=['A', 'B', 'C', 'D'])
+                    print(df)
+
+                    A         B         C         D
+            0 -0.114411 -0.347792  0.229905  0.065136
+            1  0.148687  0.059598 -1.112178  0.756411
+            2  0.077918  0.836827  0.724616 -1.407580
+            3  0.444887 -0.999218  0.941205 -0.571649
+            4  0.956962 -2.111386  1.750528 -0.535394
+            5 -0.851575 -0.284910 -1.204987 -0.377005
+            6  1.455807  1.804247  0.501115 -0.158252
+            7  0.069308  0.233180  0.630596  0.588123
+            8 -1.579659  0.368966 -0.046377 -1.772217
+            9 -2.010410  1.233158  0.491535 -0.652648
+
+
+                    df2 = pd.DataFrame(np.random.randn(7, 3), columns=['A', 'B', 'C'])
+                    print(df2)
+
+                    A         B         C
+            0 -0.359847  1.270701 -0.543924
+            1  0.791467  0.054907 -1.597074
+            2  0.410268  1.970034  0.093196
+            3 -0.781616 -1.265766  0.866533
+            4  1.132170 -0.089533  0.838081
+            5 -0.326185 -0.739385  1.039565
+            6  1.176743  1.153180 -0.845549
+
+                    df + df2
+
+                    A	B	C	D
+            0	-0.474259	0.922909	-0.314019	NaN
+            1	0.940154	0.114505	-2.709252	NaN
+            2	0.488186	2.806861	0.817812	NaN
+            3	-0.336729	-2.264984	1.807737	NaN
+            4	2.089132	-2.200919	2.588609	NaN
+            5	-1.177760	-1.024295	-0.165422	NaN
+            6	2.632550	2.957427	-0.344434	NaN
+            7	NaN	NaN	NaN	NaN
+            8	NaN	NaN	NaN	NaN
+            9	NaN	NaN	NaN	NaN
+                </code>
+            </pre>
+            <span>When doing an operation between DataFrame and Series, the default behavior is to align the Series index on the DataFrame columns, thus broadcasting row-wise.</span>
+            <pre>
+                <code>
+                    #first row
+                    df.iloc[0]
+
+                    A   -0.114411
+                    B   -0.347792
+                    C    0.229905
+                    D    0.065136
+                    Name: 0, dtype: float64
+
+                    df - df.iloc[0]
+
+                    A	       B	       C	     D
+            0	0.000000	0.000000	0.000000	0.000000
+            1	4.518987	0.032927	-1.356331	1.823923
+            2	-0.462785	-0.925923	-1.902640	-2.037752
+            3	2.787914	0.169180	-0.458408	-1.141193
+            4	0.829392	-0.446628	-2.689951	1.315584
+            5	1.753669	1.045050	-1.441441	-0.395954
+            6	-0.101438	-0.333081	-0.496779	-0.122885
+            7	1.903688	2.159604	-1.273731	0.383078
+            8	1.634896	-0.169185	-0.561561	0.824830
+            9	0.715922	-0.431021	-3.640587	1.529019
                 </code>
             </pre>
         </div>
