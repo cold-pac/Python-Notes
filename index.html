@@ -150,6 +150,7 @@
                 <li><a href="#libraries">Libraries</a></li>
                 <li><a href="#Series">Pandas Series</a></li>
                 <li><a href="#DataFrames">Pandas DataFrames</a></li>
+                <li><a href="#loadingCSVfiles">Loading CSV files</a></li>
             </ol>
         </div>
         <div id="container">
@@ -1017,6 +1018,7 @@
                     """
                 </code>
             </pre>
+            <br/>
             <span id = "DataFrames">DataFrames are a 2D, size mutable tabular data structures with labeled axes (rows and columns) = a way to store data in rectangular grids that can easily be overviewed. Series contain 1D data. DataFrames contain 2D data: a dict/object-like collection of named Series</span>
             <span>DataFrames accepts many kinds of inputs </span>
             <pre>
@@ -1077,7 +1079,9 @@
                 </code>
             </pre>
             <span>initialising a DataFrame from a Series gives a DataFrame with the same index as the input Series, and with one column whose name is the original name of the Series (only if no other column name is provided).</span>
-            <span>Summary of indexing and selection of dataframes (table): </span>
+            <br/>
+            <span>"The Basics of Indexing": Summary of indexing and selection of dataframes (table): </span>
+            <br/>
             <table>
                 <tr><th>Operation</th><th>Syntax</th><th>Result</th></tr>
                 <tr><td>Select Column</td><td>df[col]</td><td>Series</td></tr>
@@ -1159,6 +1163,10 @@
             9	0.715922	-0.431021	-3.640587	1.529019
                 </code>
             </pre>
+            <br/>
+            <span id = "loadingCSVfiles">Loading CSV files: to load a CSV file in pandas use <b>CKD = pd.read_csv("data/kidney_disease/kidney_disease.csv")</b></span>
+            <br/>
+            <span>To select multiple rows by labels in specific columns! use: <b>CKD.loc[10:20,["bp", "al"]]</b>, still returns a DataFrame (or for a specific row in a specific column <b>CKD.loc[10,["bp", "al"]]</b>, returns a Series) (or to slice by a single row AND column, returning a single cell value, use <b>CKD.loc[10, "bp"]</b> or <b>CKD.at[10, "al"]</b>)</span>
         </div>
     </body>
     </html>
