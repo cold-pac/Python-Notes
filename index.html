@@ -133,6 +133,18 @@
             document.getElementById("container").style.marginLeft = "-600px";
 
         }
+
+        window.onload = function () {
+
+            document.addEventListener("keypress", function(event){
+                if (event.key == "z") {
+                    document.getElementById("contents").style.display = "block";
+                    document.getElementById("container").style.left = "280px";
+                    document.getElementById("container").style.marginLeft = "20px";
+                }
+            });
+
+        }
     </script>
     </head>
     <body>
