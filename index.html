@@ -1186,7 +1186,7 @@
                 </code>
             </pre>
             <br/>
-            <span id = "loadingCSVfiles">Loading CSV files: to load a CSV file in pandas use <b>CKD = pd.read_csv("data/kidney_disease/kidney_disease.csv")</b></span>
+            <span id = "loadingCSVfiles">Loading CSV files: to load a CSV file/dataset in pandas use <b>CKD = pd.read_csv("data/kidney_disease/kidney_disease.csv") = "comma separated values", read/loaded as a DataFrame!!</b></span>
             <img class = 'big-img' src="Photos/CKD.PNG">
             <br/>
             <span>To select multiple rows by labels in specific columns! use: <b>CKD.loc[10:20,["bp", "al"]]</b>, still returns a DataFrame (or for a specific row in a specific column <b>CKD.loc[10,["bp", "al"]]</b>, returns a Series) (or to slice by a single row AND column, returning a single cell value, use <b>CKD.loc[10, "bp"]</b> or <b>CKD.at[10, "al"]</b>)</span>
@@ -1200,7 +1200,7 @@
             <span>To filter, use <b>.isin()</b> = <b>CKD[CKD.dm.isin(["yes"])]</b></span>
             <img class = 'big-img' src="Photos/isin_filtering.PNG">
             <br/>
-            <span>DataFrames has (built-in) methods, e.g. calling <b>.info()</b> on the DataFrame gives you summary information of the DataFrame: <b>CKD.info()</b></span>
+            <span>DataFrames has (built-in) methods, e.g. calling <b>.info()</b> on the DataFrame gives you summary information of the DataFrame: useful! <b>CKD.info()</b></span>
             <br/>
             <span><b>CKD.head(5)</b> shows you the first 5 rows, <b>CKD.tail(5)</b> shows you the last 5 rows</span>
             <br/>
@@ -1214,7 +1214,44 @@
             <br/>
             <span>To sort by row labels, use <b>CKD.sort_index(axis=0)</b>. To sort by column labels, use <b>CKD.sort_index(axis=1)</b></span>
             <br/>
-            <span>Plotting: using the <b>plotnine</b> library. Install plotnine (<b>pip install plotnine statsmodels==0.8.0</b>)</span>
+            <span id = "Plotting">Plotting: using the <b>plotnine</b> library. Install plotnine (<b>pip install plotnine statsmodels==0.8.0</b>)</span>
+            <span>In total we need to import: </span>
+            <pre>
+                <code>
+                    from pandas import *
+                    from plotnine import *
+                    import pandas as pd
+                    import warnings
+                    warnings.filterwarnings('ignore')
+
+                    CKD = pd.read_csv("data/kidney_disease/kidney_disease.csv")
+                </code>
+            </pre>
+            <span>In order to graph one of the named series of the DataFrame (in this example all the different values of a particular attribute in the sample) against another named series, use: </span>
+            <pre>
+                <code>p = ggplot(CKD, aes(x='id', y='bp')) + geom_point()</code>
+            </pre>
+            <img src="Photos/scatterplot1.PNG">
+            <span><b>geom_point()</b> renders the graph as a scatter point</span>
+            <span>To add a local regression (loess) smooth layer you must install <b>pip install scikit-misc</b></span>
+            <pre>
+                <code>
+                    p = (ggplot(CKD, aes(x='id', y='bp'))
+                         + geom_point(aes(color='classification'))
+                         + geom_smooth(method='loess', color='blue'))
+
+                    p
+                </code>
+            </pre>
+            <img src="Photos/scatterplot2.PNG">
+            <span>To split the data by Diet into separate scatter plots: </span>
+            <pre>
+                <code>
+                    p = (ggplot(CKD, aes(x='id', y='bp')) + geom_point(aes(color='classification')) + facet_wrap("~classification"))
+                    p
+                </code>
+            </pre>
+            <img src="Photos/scatterplot3.PNG">
         </div>
     </body>
     </html>
