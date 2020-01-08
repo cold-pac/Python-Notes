@@ -67,11 +67,12 @@
             position: relative;
             left: 50%;
             margin-left: -20%;
-            margin-top: 5px;
-            margin-bottom: 5px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            border: lemonchiffon 5px solid;
         }
         .big-img {
-            width: 90%;
+            width: 80%;
             margin-left: -45%;
         }
         #contents {
@@ -1380,7 +1381,7 @@
                                       ))
                 </code>
             </pre>
-            <img src="Photos/correlation%20graph.PNG">
+            <img src="Photos/correlation%20graph.PNG" class="big-img">
             <span>Dark cells indicate a correlation close to 0. red square in the top left of the matrix, corresponding to the features 'length of stay', 'number of lab procedures', 'number of procedures', and 'number of medications'. This indicates that there is some correlation between these variables. The diagonal line is simply each features correlation with itself, which is of course 1 (indicating perfect correlation).</span>
             <span>To create a dummy variable (a one hot-encoded variable) - One hot encoding is a process by which categorical variables are converted into a form that could be provided to ML algorithms to do a better job in prediction.</span>
             <pre>
