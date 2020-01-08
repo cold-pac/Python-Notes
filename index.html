@@ -1103,7 +1103,6 @@
             <span>initialising a DataFrame from a Series gives a DataFrame with the same index as the input Series, and with one column whose name is the original name of the Series (only if no other column name is provided).</span>
             <br/>
             <span>"The Basics of Indexing": Summary of indexing and selection of dataframes (table): </span>
-            <br/>
             <table>
                 <tr><th>Operation</th><th>Syntax</th><th>Result</th></tr>
                 <tr><td>Select Column</td><td>df[col]</td><td>Series</td></tr>
@@ -1112,6 +1111,7 @@
                 <tr><td>Slice rows</td><td>df[5:10]</td><td>DataFrame</td></tr>
                 <tr><td>Slice rows by boolean vector</td><td>df[bool_vec]</td><td>DataFrame</td></tr>
             </table>
+            <br/>
             <span>For DataFrame operations data will align by column name and row label.</span>
             <pre>
                 <code>
@@ -1222,7 +1222,7 @@
                     from plotnine import *
                     import pandas as pd
                     import warnings
-                    warnings.filterwarnings('ignore')
+                    warnings.filterwarnings('ignore') #not sure what this is about
 
                     CKD = pd.read_csv("data/kidney_disease/kidney_disease.csv")
                 </code>
@@ -1232,7 +1232,7 @@
                 <code>p = ggplot(CKD, aes(x='id', y='bp')) + geom_point()</code>
             </pre>
             <img src="Photos/scatterplot1.PNG">
-            <span><b>geom_point()</b> renders the graph as a scatter point</span>
+            <span><b>geom_point()</b> renders the graph as a scatter point. Most useful for displaying the relationship between two <i>continuous</i> variables</span>
             <span>To add a local regression (loess) smooth layer you must install <b>pip install scikit-misc</b></span>
             <pre>
                 <code>
@@ -1252,6 +1252,132 @@
                 </code>
             </pre>
             <img src="Photos/scatterplot3.PNG">
+            <span>To create a histogram of the data: </span>
+            <pre>
+                <code>
+                    # geom_histogram
+                    p = ggplot(aes(x='race', fill='race'), data=hospital)
+                    p +  geom_histogram(binwidth=1) + ggtitle("Race Histogram")
+                </code>
+            </pre>
+            <img src="Photos/race%20histogram.PNG">
+            <span><b>geom_bar()</b> gives the same result and is more versatile. The command 'fill' fills each bar with a different colour. </span>
+            <pre>
+                <code>
+                    p = ggplot(aes(x='race'), data=hospital)
+                    p + geom_bar() + ggtitle("Race Histogram")
+                </code>
+            </pre>
+            <img src="Photos/race%20histogram%20without%20colour.PNG">
+            <pre>
+                <code>
+                    p = ggplot(aes(x='race', fill = 'race'), data=hospital)
+                    p + geom_bar() + ggtitle("Race Histogram")
+                </code>
+            </pre>
+            <img src="Photos/race%20bar%20graph.PNG">
+            <span>We can alter the aesthetic mappings of geom_bar() to produce a histogram showing percentages rather than raw counts.</span>
+            <pre>
+                <code>
+                    p = ggplot(aes(x='race', fill='race'), data=hospital)
+                    p + geom_bar(aes(y = ('100*..count../sum(..count..)')))+ ggtitle("Race Histogram")+ylab("Percentage")
+                </code>
+            </pre>
+            <img src="Photos/race%20histogram%20with%20percentages.PNG" >
+            <span>width is an optional argument for the spacing between each bar: default value is 0.9</span>
+            <pre>
+                <code>
+                    p = ggplot(aes(x='age',fill='age'), data=hospital)
+                    p + geom_bar(width = 0.5) + ggtitle("Age Histogram")
+                </code>
+            </pre>
+            <img src="Photos/age%20histogram.PNG" >
+            <span>To check for 'null'  or missing values per column/variable: replace the missing value ("?") with NaN, check if every value is null with <b>isnull()</b> which returns 1 if true and 0 if false, and then sum the 1s. </span>
+            <pre>
+                <code>
+                    hosp_temp = hospital.replace('?', np.nan)
+                    null_values = hosp_temp[['weight']].isnull().sum(axis=0)
+                    print('Empty rows =',null_values)
+                </code>
+            </pre>
+            <br/>
+            <span>Some examples with a new dataset: </span>
+            <pre>
+                <code>
+                    import numpy as np
+                    import pandas as pd
+
+                    from plotnine import *
+
+                    hospital = pd.read_csv('data/diabetes/HOSP_class.csv', sep=',')
+
+                    #to get the shared index (i.e. the rows of the DataFrame)
+                    hospital.index
+                    #to get the number of rows:
+                    len(hospital.index)
+
+                    #to get the labels for each Series in the DataFrame (i.e. the colums)
+                    hospital.columns
+                    #to get the number of columns
+                    len(hospital.columns)
+
+                    #to get the number of rows and columns together:
+                    hospital.shape
+                </code>
+            </pre>
+            <span><b>DataFrames.describe()</b> generates descriptive statistics that summarises the content of the dataset.</span>
+            <ul>
+                <li><b>DataFrames.describe()</b>= just continuous (or numberic) variables</li>
+                <li><b>DataFrames.describe(include='all')</b> = all variables, continuous and categorical variables</li>
+            </ul>
+            <span>Frequency tables are more useful for categorical variables: pandas <b>crosstabs</b> builds a cross-tabulation table that can show the frequency with which certain groups of data appear. </span>
+            <pre>
+                <code>
+                    my_tab = pd.crosstab(hospital['sex'],  # Make a crosstab
+                              columns="count")      # Name the count column --> there's only one column here
+
+                    my_tab
+                </code>
+            </pre>
+            <img src="Photos/frequency%20table.PNG">
+            <span>To show percentages in the frequency table: </span>
+            <pre>
+                <code>
+                    my_tab2 = pd.crosstab(hospital['sex'],  # Make a crosstab
+                              columns="count").apply(lambda r: 100*r/r.sum(), axis=0)      # Name the count column
+
+                    my_tab2
+                </code>
+            </pre>
+            <img src="Photos/frequency%20table%20with%20percentages.PNG">
+            <span>to check for the number of unique values: </span>
+            <pre>
+                <code>
+                    len(hospital.patient_id.unique())
+                </code>
+            </pre>
+            <span>To use the correlation matrix to analyse this property for our data set. Note that we drop the id variables because even though they are stored as numeric, they are in fact categorical.</span>
+            <pre>
+                <code>
+                    import seaborn as sns
+                    import matplotlib.pyplot as plt
+                    %matplotlib inline
+                    width=15
+                    height=8
+                    #"options: coolwarm, cubehelix"
+                    cmap_option='coolwarm'
+                    plt.figure(figsize=(width,height))
+                    print(sns.heatmap(hospital.drop(['admission_type_id', 'discharge_disposition_id', 'admission_source_id'], axis = 1).corr()
+                                      ,annot=True
+                                      ,linewidth=0.5
+                                      #,cmap='
+                                      ))
+                </code>
+            </pre>
+            <img src="Photos/correlation%20graph.PNG">
+            <span>Dark cells indicate a correlation close to 0. red square in the top left of the matrix, corresponding to the features 'length of stay', 'number of lab procedures', 'number of procedures', and 'number of medications'. This indicates that there is some correlation between these variables. The diagonal line is simply each features correlation with itself, which is of course 1 (indicating perfect correlation).</span>
+            <span>To create a dummy variable (a one hot-encoded variable) - One hot encoding is a process by which categorical variables are converted into a form that could be provided to ML algorithms to do a better job in prediction.</span>
+            <pre><code>pd.get_dummies(hospital)</code></pre>
         </div>
     </body>
     </html>
