@@ -866,7 +866,7 @@
                     words = ['mobius', 'table', 'hippopotamus']
                     words.sort(key=len)
 
----------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------
 
                     #use a custom key
                     def takeSecond(elem):
@@ -1383,7 +1383,9 @@
             <img src="Photos/correlation%20graph.PNG">
             <span>Dark cells indicate a correlation close to 0. red square in the top left of the matrix, corresponding to the features 'length of stay', 'number of lab procedures', 'number of procedures', and 'number of medications'. This indicates that there is some correlation between these variables. The diagonal line is simply each features correlation with itself, which is of course 1 (indicating perfect correlation).</span>
             <span>To create a dummy variable (a one hot-encoded variable) - One hot encoding is a process by which categorical variables are converted into a form that could be provided to ML algorithms to do a better job in prediction.</span>
-            <pre><code>pd.get_dummies(hospital)</code></pre>
+            <pre>
+                <code>pd.get_dummies(hospital)</code>
+            </pre>
         </div>
     </body>
     </html>
