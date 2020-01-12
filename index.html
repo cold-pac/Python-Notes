@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Python Notes</title>
@@ -15,17 +15,15 @@
               line-height: 1.8em;
               font-size: 1.03em;
               font-family: Helvetica, serif;
-               
         }
         #container {
             display: flex; 
             flex-direction: column;
-            // height: 100vh; 
-            width: 1200px; 
-           // width: 80vw;
-            margin: 20px; 
+            font-size: 0.95em;
+            width: 1040px;
+            margin: 10px;
             position: relative; 
-            left: 280px;
+            left: 230px;
         }
         pre code {
             // background-color: #eee;
@@ -36,7 +34,7 @@
         }
         b {
             background: #ebebeb; 
-            font-family: Monospace;
+            font-family: Monospace, serif;
             padding: 2px;
             color: #f55442; 
             font-weight: 600;
@@ -57,7 +55,7 @@
         }
         td:nth-child(2n) {
             background: #ebebeb;
-            font-family: Monospace;
+            font-family: Monospace, serif;
             padding: 2px;
             color: #f55442;
             font-weight: 600;
@@ -76,10 +74,16 @@
             margin-left: -45%;
         }
         #contents {
-            position: fixed; 
-            display: block; 
-            top: 100px;
-            left: 50px;
+            position: fixed;
+            font-size: 0.9em;
+            top: 0; /* was 80px before, display: block */
+            left: 10px;
+            padding-right: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+            border-right: 1px solid grey;
         }
         #contents h2 {
             text-align: center;
@@ -134,17 +138,17 @@
         function hideContentsMove() {
             document.getElementById("contents").style.display = 'none';
             document.getElementById("container").style.left = "50%";
-            document.getElementById("container").style.marginLeft = "-600px";
+            document.getElementById("container").style.marginLeft = "-520px";
 
         }
 
         window.onload = function () {
 
             document.addEventListener("keypress", function(event){
-                if (event.key == "z") {
-                    document.getElementById("contents").style.display = "block";
-                    document.getElementById("container").style.left = "280px";
-                    document.getElementById("container").style.marginLeft = "20px";
+                if (event.key === "z") {
+                    document.getElementById("contents").style.display = "flex";
+                    document.getElementById("container").style.left = "230px";
+                    document.getElementById("container").style.marginLeft = "10px";
                 }
             });
 
@@ -179,6 +183,7 @@
             </ol>
         </div>
         <div id="container">
+            <br/>
             <span>Python runs on a interpeter system ("interpreted") = code can be executed as soon as it's written. Write Python (.py) files in a text editor, then put those files in a python interpreter to be executed. To execute the .py file in the command line, just use 'python filename.py'</span>
             <br>
             <span>Organise your code into separate files, and use one main file which runs and imports items from other files. Use 'python' by itself in the command line to test Python code, use 'exit()' when you want to quit the python command line interface.</span>
