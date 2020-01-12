@@ -13,13 +13,13 @@
         <style>
         html, body {
               line-height: 1.8em;
-              font-size: 1.03em;
+              //font-size: 1.03em;
               font-family: Helvetica, serif;
         }
         #container {
             display: flex; 
             flex-direction: column;
-            font-size: 0.95em;
+            font-size: 16px;
             width: 1080px;
             margin: 10px;
             position: relative; 
@@ -91,6 +91,13 @@
             width: 10vw;
             font-weight: 400;
         }
+        #optionsMenu {
+            margin-top: 30px;
+        }
+        #optionsMenu li:hover {
+            border-left: blue 2px solid;
+            padding-left: 10px;
+        }
         pre {
             width: 90%;
         }
@@ -142,6 +149,18 @@
 
         }
 
+        let fontSize = 16;
+
+        function increaseFontSize () {
+            fontSize += 2;
+            document.getElementById("container").style.fontSize = fontSize + "px";
+        }
+
+        function decreaseFontSize () {
+            fontSize -= 2;
+            document.getElementById("container").style.fontSize = fontSize + "px";
+        }
+
         window.onload = function () {
 
             document.addEventListener("keypress", function(event){
@@ -163,6 +182,8 @@
                     <li onclick = "increaseSpacer()">Increase spacing</li>
                     <li onclick ="hideContents()">Hide contents</li>
                     <li onclick ="hideContentsMove()">Hide + move</li>
+                    <li onclick = "increaseFontSize()">Enlarge font</li>
+                    <li onclick = "decreaseFontSize()">Reduce font</li>
                 </ul>
             </h2>
             <ol id="TOC">
