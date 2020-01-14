@@ -8,7 +8,14 @@
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/a11y-dark.min.css">
         
         <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
+        <script>hljs.initHighlightingOnLoad();</script>
+
+        <script>
+                let shiftCodeBlocks = () => {
+                    Array.from(document.getElementsByTagName("code")).forEach(function(elem) {elem.textContent = elem.textContent.replace(/^\s+/mg, "")});
+                };
+
+        </script>
         
         <style>
         html, body {
@@ -187,6 +194,7 @@
                     <li onclick ="hideContentsMove()">Hide + move</li>
                     <li onclick = "increaseFontSize()">Enlarge font</li>
                     <li onclick = "decreaseFontSize()">Reduce font</li>
+                    <li onclick = "shiftCodeBlocks()">Shift codeblocks</li>
                 </ul>
             </h2>
             <ol id="TOC">
