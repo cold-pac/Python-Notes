@@ -1138,16 +1138,6 @@
             </pre>
             <span>initialising a DataFrame from a Series gives a DataFrame with the same index as the input Series, and with one column whose name is the original name of the Series (only if no other column name is provided).</span>
             <br/>
-            <span>"The Basics of Indexing": Summary of indexing and selection of dataframes (table): </span>
-            <table>
-                <tr><th>Operation</th><th>Syntax</th><th>Result</th></tr>
-                <tr><td>Select Column</td><td>df[col]</td><td>Series</td></tr>
-                <tr><td>Select row by label</td><td>df.loc[label]</td><td>Series</td></tr>
-                <tr><td>Select row by integer location</td><td>df.iloc[loc]</td><td>Series</td></tr>
-                <tr><td>Slice rows</td><td>df[5:10]</td><td>DataFrame</td></tr>
-                <tr><td>Slice rows by boolean vector</td><td>df[bool_vec]</td><td>DataFrame</td></tr>
-            </table>
-            <br/>
             <span>For DataFrame operations data will align by column name and row label.</span>
             <pre>
                 <code>
@@ -1225,10 +1215,31 @@
             <span id = "loadingCSVfiles">Loading CSV files: to load a CSV file/dataset in pandas use <b>CKD = pd.read_csv("data/kidney_disease/kidney_disease.csv") = "comma separated values", read/loaded as a DataFrame!!</b></span>
             <img class = 'big-img' src="Photos/CKD.PNG">
             <br/>
-            <span>To select multiple rows by labels in specific columns! use: <b>CKD.loc[10:20,["bp", "al"]]</b>, still returns a DataFrame (or for a specific row in a specific column <b>CKD.loc[10,["bp", "al"]]</b>, returns a Series) (or to slice by a single row AND column, returning a single cell value, use <b>CKD.loc[10, "bp"]</b> or <b>CKD.at[10, "al"]</b>)</span>
+            <span>"The Basics of Indexing": Summary of indexing and selection of DataFrames (table): </span>
+            <table>
+                <tr><th>Operation</th><th>Syntax</th><th>Result</th></tr>
+                <tr><td>Select Column</td><td>df[col]</td><td>Series</td></tr>
+                <tr><td>Select row by label</td><td>df.loc[label]</td><td>Series</td></tr>
+                <tr><td>Select row by integer location</td><td>df.iloc[loc]</td><td>Series</td></tr>
+                <tr><td>Slice rows</td><td>df[5:10]</td><td>DataFrame</td></tr>
+                <tr><td>Slice rows by boolean vector</td><td>df[bool_vec]</td><td>DataFrame</td></tr>
+            </table>
+            <span>loc gets rows or columns with particular labels, iloc gets rows or columns from particular indexes (as in only takes integers)</span>
+            <span>To select multiple rows by labels in specific columns! use: <b>CKD.loc[10:20,["bp", "al"]]</b>, still returns a DataFrame</span>
             <img src="Photos/row+column.PNG">
+            <span>or for a specific row in a multiple specific columns <b>CKD.loc[10,["bp", "al"]]</b>, returns a Series</span>
             <img src="Photos/single%20row,%202%20columns.PNG">
+            <span>or to slice by a single row AND column, returning a single cell value, use <b>CKD.loc[10, "bp"]</b> or <b>CKD.at[10, "al"]</b></span>
             <img src="Photos/single%20row%20by%20column.PNG">
+            <span>the <b>loc</b> indexer can do boolean selection: <b>df.loc[df['Age'] < 30, ['Color', 'Height']]</b></span>
+            <span>Using <b>iloc</b> to access specific records and columns: use <b>DataFrameName.iloc[row selection, column selection]</b> e.g. </span>
+            <pre>
+                <code>
+                    print(hospital_admission.iloc[0:20,0:5])
+                    # Selecting the first 20 rows and columns 0 to 5 from 'hospital_admission' data
+                </code>
+            </pre>
+            <img src="Photos/iloc-example1.PNG" class="big-img">
             <br/>
             <span>THIS IS REALLY COOL: you can "subset" (i.e. only return matching variables) with a comparison operator/booleans: e.g. <b>CKD[CKD.bp > 76.47]</b></span>
             <img src="Photos/convert%20to%20boolean.PNG">
@@ -1365,7 +1376,7 @@
             </pre>
             <span><b>DataFrames.describe()</b> generates descriptive statistics that summarises the content of the dataset.</span>
             <ul>
-                <li><b>DataFrames.describe()</b>= just continuous (or numberic) variables</li>
+                <li><b>DataFrames.describe()</b>= just continuous (or numeric) variables</li>
                 <li><b>DataFrames.describe(include='all')</b> = all variables, continuous and categorical variables</li>
             </ul>
             <span>Frequency tables are more useful for categorical variables: pandas <b>crosstabs</b> builds a cross-tabulation table that can show the frequency with which certain groups of data appear. </span>
