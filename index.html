@@ -1405,7 +1405,7 @@
                     len(hospital.patient_id.unique())
                 </code>
             </pre>
-            <span>To use the correlation matrix to analyse this property for our data set. Note that we drop the id variables because even though they are stored as numeric, they are in fact categorical.</span>
+            <span>Many machine learning algorithms require featuers to be uncorrelated. You should use a correlation matrix to analyse this property for our dataset. To do this, use the <b>seaborn</b> library and <b>seaborn.heatmap(DataFrameName)</b> To use the correlation matrix to analyse this property for our data set. Note that we drop the id variables because even though they are stored as numeric, they are in fact categorical.</span>
             <pre>
                 <code>
                     import seaborn as sns
