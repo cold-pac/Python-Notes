@@ -1264,16 +1264,13 @@
             <span>To 'drop' or remove specific columns from the DataFrame dataset/table, use <b>DataFrameName.drop([column names], axis=1)</b></span>
             <br/>
             <span id = "Plotting">Plotting: using the <b>plotnine</b> library. Install plotnine (<b>pip install plotnine statsmodels==0.8.0</b>)</span>
+            <span>It's a really good idea to visualise your outcome variable (in a classification ML problem) e.g. with a histogram using matplotlib</span>
             <span>In total we need to import: </span>
             <pre>
                 <code>
                     from pandas import *
                     from plotnine import *
                     import pandas as pd
-                    import warnings
-                    warnings.filterwarnings('ignore') #not sure what this is about
-
-                    CKD = pd.read_csv("data/kidney_disease/kidney_disease.csv")
                 </code>
             </pre>
             <span>In order to graph one of the named series of the DataFrame (in this example all the different values of a particular attribute in the sample) against another named series, use: </span>
@@ -1349,6 +1346,19 @@
                     print('Empty rows =',null_values)
                 </code>
             </pre>
+            <span>You can create a bar graph with just <b>pandas.DataFrame.plot()</b> - already included in the pandas library!</span>
+            <pre>
+                <code>
+                    # Plot proportions for each class of 'readmission', by using the command: DataFrame.column.value_counts().plot()
+                    #DataFrame here is hospital_admission
+
+                    color = ['steelblue', 'coral']
+                    ax = (hospital_admission.readmission.value_counts()/len(hospital_admission)*100).plot(kind="bar",color=color, rot=0)
+                    ax.set_yticks(np.arange(0, 120,20))
+                    ax.set_title('Readmission (No/Yes)')
+                </code>
+            </pre>
+            <img src="Photos/readmissions%20bargraph.png">
             <br/>
             <span>Some examples with a new dataset: </span>
             <pre>
@@ -1424,7 +1434,21 @@
                 </code>
             </pre>
             <img src="Photos/correlation%20graph.PNG" class="big-img">
-            <span>Dark cells indicate a correlation close to 0. red square in the top left of the matrix, corresponding to the features 'length of stay', 'number of lab procedures', 'number of procedures', and 'number of medications'. This indicates that there is some correlation between these variables. The diagonal line is simply each features correlation with itself, which is of course 1 (indicating perfect correlation).</span>
+            <pre>
+                <code>
+                    #another example: with hospital_admission as the DataFrame
+
+                    import seaborn as sns
+                    import pylab as pl
+                    import matplotlib.pyplot as plt
+
+                    # We plot our variables
+                    f, ax = plt.subplots(figsize=(12, 9)) # Setting size of the results panel
+                    sns.heatmap(hospital_admission.corr() ,linewidths=.1, annot=True, annot_kws={"size": 15}, cmap='viridis', ax=ax)
+                </code>
+            </pre>
+            <img src="Photos/correlation%20graph2.PNG" class="big-img">
+            <span>Dark cells indicate a correlation close to 0! (THIS IS GOOD NEWS). red/light blue square in the top left of the matrix, corresponding to the features 'length of stay', 'number of lab procedures', 'number of procedures', and 'number of medications' = indicates that there is some correlation between these variables (makes sense as we would expect length of stay to increase with an increasing number of procedures and medications). The diagonal line is simply each features correlation with itself, which is of course 1 (indicating perfect correlation).</span>
             <span>To create a dummy variable (a one hot-encoded variable) - One hot encoding is a process by which categorical variables are converted into a form that could be provided to ML algorithms to do a better job in prediction.</span>
             <pre>
                 <code>pd.get_dummies(hospital)</code>
