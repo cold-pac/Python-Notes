@@ -408,172 +408,171 @@
             <span id="Data"> There are four 'collection data types' or 'sequences' in Python. A sequence is the generic term for finite, ordered sets indexed by non-negative indices. </span>
                 <ul>
                     <li>Lists (equiv. to an array): ordered, changeable, allows duplicate elements. Mutable! Formed by placing a comma separated list of expressions in curly brackets.</li>
-                    <pre>
-                        <code>
-                          myList = ['apples', 'oranges', 'bananas', 'tomatoes'] #a list
+<pre>
+    <code>
+myList = ['apples', 'oranges', 'bananas', 'tomatoes'] #a list
 
-                            #using the list constructor instead (NB double brackets):
+#using the list constructor instead (NB double brackets):
+myList = list(('apples', 'oranges', 'bananas', 'tomatoes'))
 
-                            myList = list(('apples', 'oranges', 'bananas', 'tomatoes'))
+print(myList[1]) #prints 'oranges'
 
-                            print(myList[1]) #prints 'oranges'
+for x in myList:
+    print(x)
 
-                            for x in myList:
-                                print(x)
+#check if element is present in list
+if 'apples' in myList:
+    print('yes')
 
-                            #check if element is present in list
-                            if 'apples' in myList:
-                                print('yes')
+#list length
+print (len(myList))
 
-                            #list length
-                            print (len(myList))
+#add elements to the end of the array (like .push())
+myList.append('strawberries')
 
-                            #add elements to the end of the array (like .push())
-                            myList.append('strawberries')
+#to insert element at a specific index
+myList.insert(1, 'cherries')
 
-                            #to insert element at a specific index
-                            myList.insert(1, 'cherries')
+#to remove a specific element
+myList.remove('oranges')
 
-                            #to remove a specific element
-                            myList.remove('oranges')
+#to remove a specific index (if non-specified removes last element):
+myList.pop(0) or
+del myList[0]
 
-                            #to remove a specific index (if non-specified removes last element):
-                            myList.pop(0) or
-                            del myList[0]
+#to completely empty the list
+myList.clear()
 
-                            #to completely empty the list
-                            myList.clear()
+#to copy a list use:
+newList = myList.copy()
+    </code>
 
-                            #to copy a list use:
-                            newList = myList.copy()
-                        </code>
-                    </pre>
+</pre>
                     <li>Tuples: ordered, UNCHANGEABLE/IMMUTABLE, allows duplicate elements. ROUND BRACKETS!</li>
-                    <pre>
-                        <code>
-                            mytuple = ('printer', 'stapler', 'computer') #OR
-                            mytuple = tuple(('printer', 'stapler', 'computer'))
+<pre>
+    <code>
+mytuple = ('printer', 'stapler', 'computer') #OR
+mytuple = tuple(('printer', 'stapler', 'computer'))
 
-                            print(mytuple[0]) #logs 'printer'
+print(mytuple[0]) #logs 'printer'
 
-                            for x in mytuple:   #to loop through a tuple
-                                print(x)
+for x in mytuple:   #to loop through a tuple
+    print(x)
 
-                            if 'printer' exists in mytuple:
-                                print('yes, there is a printer here')
+if 'printer' exists in mytuple:
+    print('yes, there is a printer here')
 
-                            print(len(mytuple)) #returns 3
+print(len(mytuple)) #returns 3
 
-                            del mytuple #you cannot remove or add items to a tuple, but you can delete the whole thing
-                        </code>
-                    </pre>
+del mytuple #you cannot remove or add items to a tuple, but you can delete the whole thing
+    </code>
+
+</pre>
                     <li>Set: unordered, unindexed, NO duplicate elements. CURLY BRACKETS. Cannot be indexed, but can be iterated over. <b>len()</b> tells you how many things in a set. </li>
-                    <pre>
-                        <code>
-                            mySet = {'Harry', 'Mark', 'Tom'} #or
-                            mySet = set(('Harry', 'Mark', 'Tom'))
+<pre>
+    <code>
+mySet = {'Harry', 'Mark', 'Tom'} #or
+mySet = set(('Harry', 'Mark', 'Tom'))
 
-                            #you cannot get elements by their position/index, because sets are unordered/indexed
+#you cannot get elements by their position/index, because sets are unordered/indexed
 
-                            for x in mySet: #loop through the set
-                                print(x)
+for x in mySet: #loop through the set
+    print(x)
 
-                            print('Mark' in mySet) #returns true
+print('Mark' in mySet) #returns true
 
-                            mySet.add('John-John') #add a single element
+mySet.add('John-John') #add a single element
 
-                            mySet.update('Sam', 'Nick', 'James') #add multiple elements at once
+mySet.update('Sam', 'Nick', 'James') #add multiple elements at once
 
-                            print(len(mySet)) #length of the set
+print(len(mySet)) #length of the set
 
-                            mySet.remove('Harry') #or
-                            mySet.discard('Harry') #to remove an element
+mySet.remove('Harry') #or
+mySet.discard('Harry') #to remove an element
 
-                            mySet.pop() #removes the last element from the set ==> unordered, you do not know what this will be.
+mySet.pop() #removes the last element from the set ==> unordered, you do not know what this will be.
 
-                            mySet.clear() #empties the set
+mySet.clear() #empties the set
 
-                            del mySet #deletes the set completely
-                        </code>
-                    </pre>
+del mySet #deletes the set completely
+    </code>
+
+</pre>
                     <li>Dictionary (equiv. to an object): unordered, changeable and indexed. NO duplicate elements. "mutable mapping types containing (key, value) associations."</li>
-                    <pre>
-                        <code>
-                            myDict = {
-                            'name': 'Lightning McQueen',
-                            'type': 'racecar',
-                            'age': 4,
-                            'winner': true
-                            }
+<pre>
+    <code>
 
-                            or
+myDict = {
+    'name': 'Lightning McQueen',
+    'type': 'racecar',
+    'age': 4,
+    'winner': true
+}
+#or
+dict(name="Lightning McQueen", type="racecar", age=4, winner = true)
 
-                            dict(name="Lightning McQueen", type="racecar", age=4, winner = true)
+myDict['age'] #returns 4
+myDict.get('age') #returns the value of the 'age' key
 
-                            myDict['age'] #returns 4
-                            myDict.get('age') #returns the value of the 'age' key
+myDict['age'] = 25 #changes the value of 'age' to 25
 
-                            myDict['age'] = 25 #changes the value of 'age' to 25
+#to loop through the dictionary/object keys
+for x in myDict:
+    print(x)
 
-                            #to loop through the dictionary/object keys
-                            for x in myDict:
-                                print(x)
+#to loop through the dictionary values
+for x in myDict:
+    print(myDict[x])
+#or
+for x in myDict.values():
+    print(x)
 
-                            #to loop through the dictionary values
-                            for x in myDict:
-                                print(myDict[x])
+#to loop through dictionary keys and values
+for x, y in myDict.items():
+    print(x,y)
 
-                            #or
-                            for x in myDict.values():
-                                print(x)
+#check if key exists
+if 'age' in myDict:
+    print('dict has an "age" key')
 
-                            #to loop through dictionary keys and values
-                            for x, y in myDict.items():
-                                print(x,y)
+#to determine how many items (key-value pairs) the dictionary/object has
+print(len(myDict))
 
-                            #check if key exists
-                            if 'age' in myDict:
-                                print('cool')
+#to remove items using a specific key
+myDict.pop('age')
+#or
+del myDict['age']
 
-                            #to determine how many items (key-value pairs) the dictionary/object has
-                            print(len(myDict))
+#to remove the last inserted item
+myDict.popItem()
 
-                            #to remove items using a specific key
-                            myDict.pop('age')
-                            #or
-                            del myDict['age']
+#to empty a dictionary
+myDict.clear()
 
-                            #to remove the last inserted item
-                            myDict.popItem()
+#to copy a dictionary
+newDict = myDict.copy() or
+newDict = dict(myDict)
+"""
+remember, if you use newDict = myDict, newDict will simply be a reference to myDict,
+and any changes to myDict will also occur in newDict
+"""
 
-                            #to empty a dictionary
-                            myDict.clear()
+######################################
+IMPORTANT
+dict_1 = {'Age': 22, 1: 5, 'Name': 'Bob'}
 
-                            #to copy a dictionary
-                            newDict = myDict.copy() or
-                            newDict = dict(myDict)
-                            """
-                            remember, if you use newDict = myDict, newDict will simply be a reference to myDict,
-                            and any changes to myDict will also occur in newDict
-                            """
+#The keys of a dictionary are accessed as an iterable using the .keys() method.
+dict_1.keys()
 
-                            ######################################
-                            IMPORTANT
+#The values are likewise accessed using .values().
+dict_1.values()
 
-                            dict_1 = {'Age': 22, 1: 5, 'Name': 'Bob'}
+#To iterate over both in lock-step use .items().
+dict_1.items()
+#Do not rely on .keys() and .values() returning associated objects in the same order, use .items().
+    </code>
 
-                            #The keys of a dictionary are accessed as an iterable using the .keys() method.
-                            dict_1.keys()
-
-                            #The values are likewise accessed using .values().
-                            dict_1.values()
-
-                            #To iterate over both in lock-step use .items().
-                            dict_1.items()
-
-                            #Do not rely on .keys() and .values() returning associated objects in the same order, use .items().
-                        </code>
-                    </pre>
+</pre>
                 </ul>
             <br>
             <span>
