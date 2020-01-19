@@ -91,6 +91,7 @@
             justify-content: center;
             height: 100vh;
             border-right: 1px solid grey;
+            overflow: auto;
         }
         #contents h2 {
             text-align: center;
@@ -99,7 +100,11 @@
             font-weight: 400;
         }
         #optionsMenu {
+            display: none;
             margin-top: 30px;
+            text-align: left;
+            font-size: 0.8em;
+            list-style-type: none;
         }
         #optionsMenu li {
             padding-left: 5px;
@@ -131,12 +136,15 @@
               
       </style>
     <script>
+
         let displayed = false;
         function displayOptions (change) {
             if (change) {
                 document.getElementById('optionsMenu').style.display = 'block';
+                document.getElementById('contents-header').style.marginTop = "30vh";
             } else {
                 document.getElementById('optionsMenu').style.display = 'none';
+                document.getElementById('contents-header').style.marginTop = "0";
             }
         }
 
@@ -187,8 +195,8 @@
     <body>
         <div id="contents">
             <h2 style = "cursor: pointer;">
-                <div onclick = "console.log(displayed);displayed = !displayed; displayOptions(displayed)" >[Options]</div>
-                <ul id = 'optionsMenu' style = 'display:none; text-align: left; font-size: 0.8em; list-style-type: none;'>
+                <div id = "contents-header" onclick = "console.log(displayed);displayed = !displayed; displayOptions(displayed)" >[Options]</div>
+                <ul id = 'optionsMenu'>
                     <li onclick = "increaseSpacer()">Increase spacing</li>
                     <li onclick ="hideContents()">Hide contents</li>
                     <li onclick ="hideContentsMove()">Hide + move</li>
@@ -208,6 +216,7 @@
                 <li><a href="#RegEx">Regular Expressions</a></li>
                 <li><a href="#sorting">Sorting</a></li>
                 <li><a href="#libraries">Libraries</a></li>
+                <li><a href="#Threading">Threading</a></li>
                 <li><a href="#Series">Pandas Series</a></li>
                 <li><a href="#DataFrames">Pandas DataFrames</a></li>
                 <li><a href="#loadingCSVfiles">Loading CSV files</a></li>
@@ -907,7 +916,7 @@
                     words = ['mobius', 'table', 'hippopotamus']
                     words.sort(key=len)
 
------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 
                     #use a custom key
                     def takeSecond(elem):
@@ -977,6 +986,44 @@
             </pre>
             <span>You can download and compile Python packages with <b>pip</b> (the Python package-management system) in the command line. Give pip the list of packages you want to install and it will install them. <b>pip list</b> shows you the packages currently installed, <b>pip show</b> will show you information about a specific installed package, <b>pip search</b> lets you search PyPI for packages</span>
             <br>
+            <!-- make notes on asyncio here as well -->
+            <span id = "Threading">Threading: Multiple threads can exist within one process, executing concurrently and sharing resources (such as memory, dynamically allocated variables and non-thread global variables). Processes are independent, whereas threads exist as subsets of a process. Single-threading is the processing of one command at a time. Multi-threading is used when you want multitasking - each thread shares the process's resources, but execute independently (task parallelism)</span>
+            <img src="Photos/800px-Multithreaded_process.svg.png" alt="wikipedia multithread diagram">
+            <span>To use threading: first <b>import threading</b> (the threading module)</span>
+            <span>To list active threads, use <b>threading.enumerate()</b>. To get the number of active threads, use <b>threading.active_count()</b></span>
+            <span>To create a new thread yourself: instantiate the class (remember - classes are object constructor functions) <b>threading.Thread(group=None, target=None, name=None, args=(), kwargs={}, *, daemon=None)</b>. You need to pass the constructor a "target" (a function to call when the thread starts), the name of the thread, the arguments you want to pass the target (as a tuple), and whether or not you want the thread to be daemonic (default = None, for not daemonic)</span>
+            <span>A 'daemon' in CS is a process that runs in the background. You can flag threads as 'daemon threads' - this means the entire Python program will exit when only daemon threads are left (i.e. everything else finishes executing). To do this, either pass <b>daemon = True</b> in the <b>threading.Thread</b> constructor (class), or set the created Thread object's property of <b>daemon = True</b></span>
+            <span>The newly created Thread (object) has methods you can call on it: <b>start()</b> - which starts the Thread, <b>run()</b> - which calls the Thread's target function, <b>.join(timeout= None)</b> - wait until the Thread terminates (you can pass it a floating point = the number of seconds it should wait to terminate before ignoring .join())</span>
+<pre>
+    <code>
+import threading
+import time
+
+
+def a_func(arg1, arg2):
+    x = 0
+    while x < 20:
+        x += 1
+        print(arg1, arg2) #just prints "hey hi" every second 20 times
+        time.sleep(1)
+
+thread_1 = threading.Thread(target=a_func, args=('hey', 'hi'), daemon = True, name = "Mah-thread")
+thread_1.start()
+
+def b_func():
+    x = 0
+    while x < 20:
+        x += 1
+        print(x)
+        time.sleep(0.5) #prints 1,2,3... every half a second
+
+thread_2 = threading.Thread(target=b_func, daemon=True, name = "my-second-thread")
+thread_2.start()
+    </code>
+
+</pre>
+            <br/>
+            <!-- also want notes on GUI creaation with (tkinker? and the web one) -->
             <span id = "Series">To use Pandas <b>Series</b> and <b>DataFrame</b> data types, install pandas (as a package): <b>pip install pandas</b>, and import it. Pandas is built on top of <b>numpy</b></span>
             <pre>
                 <code>
