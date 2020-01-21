@@ -1022,6 +1022,27 @@ thread_2.start()
 
 </pre>
             <br/>
+            <span>Pickle: is used to store Python objects (lists, dictionaries, dataframes) in a file that we can call or load after. </span>
+<pre>
+    <code>
+import pickle
+
+with open('hospital_data.pickle', 'wb') as output:
+    pickle.dump(hospital, output)
+    </code>
+
+</pre>
+            <span> To import the data in another module: </span>
+<pre>
+    <code>
+import pickle
+
+with open('hospital_data.pickle', 'rb') as data:
+        hospital = pickle.load(data)
+    </code>
+
+</pre>
+            <br/>
             <!-- also want notes on GUI creaation with (tkinker? and the web one) -->
             <span id = "Series">To use Pandas <b>Series</b> and <b>DataFrame</b> data types, install pandas (as a package): <b>pip install pandas</b>, and import it. Pandas is built on top of <b>numpy</b></span>
             <pre>
