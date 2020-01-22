@@ -1023,26 +1023,34 @@ thread_2.start()
 
 </pre>
             <br/>
-            <span id = "Pickle">Pickle: is used to store Python objects (K) in a file that we can call or load after. </span>
-<pre>
-    <code>
-import pickle
+            <span id = "Pickle">Pickle is used to: serialize and deserialize Python 'object structures' =  "converting the object in memory (RAM) to a byte stream - which can be stored on disk (in a file that we can call or load after) or sent over a network" (data-interchange). The character/byte stream can be retrieved and de-serialized back to a Python object --> used for Most variables can be pickled.  </span>
+            <span>To use pickle, import pickle</span>
+<pre><code>import pickle</code></pre>
+            <span>To pickle a variable (like a dictionary), you need to specify the name of the file to write it to (e.g. <b>'myfilename'</b>) - the file does not have an extension</span>
+            <span>To open that file (<b>filename</b>), use the <b>open()</b> function. 1st argument = the name of the file, 2nd argument = 'wb' <b>w</b> = writing to the file, <b>b</b> = binary mode</span>
+            <pre>
+                <code>
+                    filename = 'myfilename'
 
-with open('hospital_data.pickle', 'wb') as output:
-    pickle.dump(hospital, output)
-    </code>
-
-</pre>
-            <span> To import the data in another module: </span>
-<pre>
-    <code>
-import pickle
-
-with open('hospital_data.pickle', 'rb') as data:
-        hospital = pickle.load(data)
-    </code>
-
-</pre>
+                    outfile = open(filename, 'wb')
+                </code>
+            </pre>
+            <span>NOW THE FILE IS OPENED FOR WRITING: now you can use <b>pickle.dump()</b> - takes two arguments - 1st = the object you want to pickle (e.g. my_dict), 2nd = the file to which the object has to be saved (<b>outfile</b>). Then you have to close the file with <b>.close()</b>!!</span>
+            <pre>
+                <code>
+                    pickle.dump(my_dict, outfile)
+                    outfile.close()
+                </code>
+            </pre>
+            <br/>
+            <span>To unpickle a file, use the <b>open()</b> function, except with second argument of <b>'rb'</b> instead of <b>'wb'</b> (read mode, binary) = reading a binary file. Then use <b>pickle.load()</b> passing it the opened file as an argument, and assign it to a variable name (e.g. new_dict). AGAIN, you need to close the opened file.  </span>
+            <pre>
+                <code>
+                    infile = open(filename, 'rb')
+                    new_dict = pickle.load(infile)
+                    infile.close()
+                </code>
+            </pre>
             <br/>
             <!-- also want notes on GUI creaation with (tkinker? and the web one) -->
             <span id = "Series">To use Pandas <b>Series</b> and <b>DataFrame</b> data types, install pandas (as a package): <b>pip install pandas</b>, and import it. Pandas is built on top of <b>numpy</b></span>
