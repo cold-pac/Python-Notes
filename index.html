@@ -217,7 +217,7 @@
                 <li><a href="#sorting">Sorting</a></li>
                 <li><a href="#libraries">Libraries</a></li>
                 <li><a href="#Threading">Threading</a></li>
-                <li><a href="#Pickle">Pickle</a></li>
+                <li><a href="#Pickle">Pickling</a></li>
                 <li><a href="#Series">Pandas Series</a></li>
                 <li><a href="#DataFrames">Pandas DataFrames</a></li>
                 <li><a href="#loadingCSVfiles">Loading CSV files</a></li>
@@ -1023,9 +1023,12 @@ thread_2.start()
 
 </pre>
             <br/>
-            <span id = "Pickle">Pickle is used to: serialize and deserialize Python 'object structures' =  "converting the object in memory (RAM) to a byte stream - which can be stored on disk (in a file that we can call or load after) or sent over a network" (data-interchange). The character/byte stream can be retrieved and de-serialized back to a Python object --> used for Most variables can be pickled.  </span>
+            <span id = "Pickle">Pickle is used to: serialize and deserialize Python 'object structures' =  converting the object in memory (RAM) to a byte stream - which can be stored on disk (in a file that we can call or load after) or sent over a network (data-interchange). The character/byte stream can be retrieved and de-serialized back to a Python object --> Most variables can be pickled.  </span>
             <span>To use pickle, import pickle</span>
-<pre><code>import pickle</code></pre>
+<pre>
+    <code>import pickle</code>
+
+</pre>
             <span>To pickle a variable (like a dictionary), you need to specify the name of the file to write it to (e.g. <b>'myfilename'</b>) - the file does not have an extension</span>
             <span>To open that file (<b>filename</b>), use the <b>open()</b> function. 1st argument = the name of the file, 2nd argument = 'wb' <b>w</b> = writing to the file, <b>b</b> = binary mode</span>
             <pre>
