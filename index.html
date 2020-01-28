@@ -1060,6 +1060,13 @@ thread_2.start()
                     infile.close()
                 </code>
             </pre>
+            <span>You can condense this down by using Python's <b>with... as</b> syntax</span>
+            <pre>
+                <code>
+                    with open('hospital_data.pickle', 'rb') as data:
+                        hospital = pickle.load(data)
+                </code>
+            </pre>
             <br/>
             <!-- also want notes on GUI creaation with (tkinker? and the web one) -->
             <span id = "Series">To use Pandas <b>Series</b> and <b>DataFrame</b> data types, install pandas (as a package): <b>pip install pandas</b>, and import it. Pandas is built on top of <b>numpy</b></span>
