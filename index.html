@@ -452,6 +452,11 @@ myList.clear()
 
 #to copy a list use:
 newList = myList.copy()
+
+#to slice a list
+animals = ["tiger", "monkey", "cat", "dog", "horse", "elephant"]
+print(animals[1:3]) #prints ["monkey", "cat"]
+#non-inclusive for 2ND index
     </code>
 
 </pre>
@@ -872,7 +877,17 @@ dict_1.items()
             <br>
             <span>To count the number of times an element is in a list use <b>list.count(element)</b></span>
             <br>
-            <span id="listComprehension">To convert all the elements in a list to integers use a list comprehension: <b>[int(x) for x in list]</b></span>
+            <span id="listComprehension">List comprehensions = iterates over the elements of a list (like with a for loop) and stores the results of each iteration in a new list. </span>
+            <pre>
+                <code>
+                    a = [i for i in range(10)]
+                    b = [i**2 for i in range(10)]
+                    c = [[i, i**2, i**3] for i in range(10)]
+                    d = [[i, i**2, i**3] for i in range(10) if i%2] #conditionals!
+                    e = [[i+j for i in 'abcde'] for j in 'xyz'] #nesting!
+                </code>
+            </pre>
+            <span>To convert all the elements in a list to integers use a list comprehension: <b>[int(x) for x in list]</b></span>
             <br>
             <span>Map through a list or a tuple using <b>map(function, iterables)</b></span>
             <pre>                <code class="hljs properties">
